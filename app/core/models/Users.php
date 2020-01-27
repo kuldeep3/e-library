@@ -9,7 +9,7 @@ class Users extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'user';
-        $this->col_name = array('id','provider', 'provider_id', 'name', 'email', 'password', 'user_type',  'hash');
+        $this->col_name = array('id', 'provider', 'provider_id', 'name', 'email', 'password', 'user_type',  'hash');
         $this->values = array('email');
         // $this->param_values = [];
     }
@@ -19,7 +19,15 @@ class Users extends QueryBuilder
         return parent::list($this->table, $this->col_name);
     }
 
-
+    // public function insertUsers()
+    // {
+    //     $name = trim($_POST['name']);
+    //     $email = trim($_POST['email']);
+    //     $password = $_POST['password'];
+    //     $secured_pass = password_hash($password, PASSWORD_BCRYPT);
+    //     parent::insert($this->table, $this->col_name);
+        
+    // }
     public function insertUsers($name, $email, $password)
     {
         // $name = trim($_POST['name']);
@@ -104,11 +112,11 @@ class Users extends QueryBuilder
     //      $select = parent::select($this->table,$this->col_name,$this->values, $provider);
     //      if ($select->execute()) {
     //          if ($select->rowcount() > 0) {
-                 
+
     //          }
     //      } else {
     //          echo 'something went wrong';
     //      }
-         
+
     // }
 }

@@ -17,23 +17,24 @@ class QueryBuilder
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    // public function insert($table, $col_name, $col_values)
-    // {
-    //     $col_values = implode(',', $col_values);
-    //     $col_name = implode(',', $col_name);
-    //     $stmt = $this->pdo->prepare("INSERT INTO ${table} (${col_name}) VALUES (${col_values}) ");
-    //     return $stmt;
-    // }
-    public function insert($table, $parameters) {
-        $sql = sprintf(
-            'insert into %s (%s) values (%s)',
-            $table,
-            implode(', ', array_keys($parameters)),
-            ':' . implode(', :', array_keys($parameters))
-        );
-        $stmt->$this->pdo->prepare($sql);
-        $stmt->execute();
+    public function insert($table, $col_name, $col_values)
+    {
+        $col_values = implode(',', $col_values);
+        $col_name = implode(',', $col_name);
+        $stmt = $this->pdo->prepare("INSERT INTO ${table} (${col_name}) VALUES (${col_values}) ");
+        return $stmt;
     }
+    // public function insert($table, $parameters) {
+    //     $sql = sprintf(
+    //         'insert into %s (%s) values (%s)',
+    //         $table,
+    //         implode(', ', array_values($parameters)),
+    //         ':' . implode(', :', array_values($parameters))
+    //     );
+    //     $stmt = $this->pdo->prepare($sql);
+    //     return $stmt;
+        
+    // }
     public function select($table, $col_name, $values, $param_values)
     {
         $col_name = implode(',', $col_name);
