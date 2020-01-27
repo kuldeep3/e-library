@@ -9,7 +9,7 @@ class Users extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'user';
-        $this->col_name = array('name', 'email', 'password', 'user_type');
+        $this->col_name = array('id','provider', 'provider_id', 'name', 'email', 'password', 'user_type',  'hash');
         $this->values = array('email');
         // $this->param_values = [];
     }
@@ -20,10 +20,36 @@ class Users extends QueryBuilder
     }
 
 
-    public function insertUsers($values)
+    public function insertUsers($name, $email, $password)
     {
-        $this->col_values = $values;
-        return parent::insert($this->table, $this->col_name, $this->col_values);
+        // $name = trim($_POST['name']);
+        // $email = trim($_POST['email']);
+        // $password = $_POST['password'];
+        $secured_pass = password_hash($password, PASSWORD_BCRYPT);
+        $credentials = [];
+        $credentials[0] = "'" . trim($_POST['name']) . "'";
+        $credentials[1] = "'" . trim($_POST['email']) . "'";
+        $credentials[2] = "'" . $secured_pass . "'";
+        $credentials[3] = "'" . "reader" . "'";
+        $verify_password =  $_POST['verify_password'];
+        $select = parent::select($this->table, $this->col_name, $this->values, $email);
+        $select->execute();
+        if ($select->rowcount() == 0) {
+            if ($password != $verify_password) {
+                echo 'Password do not match';
+            } else {
+                $hash = md5(rand(0, 1000));
+                $credentials[4] = "'" . $hash . "'";
+                array_shift($this->col_name);
+                array_shift($this->col_name);
+                array_shift($this->col_name);
+                $insert = parent::insert($this->table, $this->col_name, $credentials);
+                $insert->execute();
+                echo 'You have signed up successfully';
+            }
+        } else {
+            echo "Email Id already exists. Please use different Email Id";
+        }
     }
 
 
@@ -47,6 +73,7 @@ class Users extends QueryBuilder
                 if ($select->execute()) {
                     if ($select->rowcount() == 1) {
                         if ($row = $select->fetch()) {
+                            $id = $row['id'];
                             $name = $row['name'];
                             $email = $row['email'];
                             $hashed_password = $row['password'];
@@ -54,6 +81,7 @@ class Users extends QueryBuilder
                             if (password_verify($password, $hashed_password)) {
                                 session_start();
                                 $_SESSION["loggedin"] = true;
+                                $_SESSION['id'] = $id;
                                 $_SESSION["name"] = $name;
                                 $_SESSION["email"] = $email;
                                 $_SESSION["user_type"] = $user_type;
@@ -71,4 +99,16 @@ class Users extends QueryBuilder
             }
         }
     }
+    // public function googleLogin($provider)
+    // {
+    //      $select = parent::select($this->table,$this->col_name,$this->values, $provider);
+    //      if ($select->execute()) {
+    //          if ($select->rowcount() > 0) {
+                 
+    //          }
+    //      } else {
+    //          echo 'something went wrong';
+    //      }
+         
+    // }
 }
