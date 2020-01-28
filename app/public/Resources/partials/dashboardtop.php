@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_type'])) {
-    header("location: /");
-}
+// session_start();
+// if (!isset($_SESSION['user_type'])) {
+//     header("location: /");
+// }
 ?>
 
 <!doctype html>
@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_type'])) {
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="public/Resources/css/style1.css">
+    <link rel="stylesheet" href="app/public/Resources/css/style1.css">
 
 </head>
 

@@ -121,27 +121,28 @@ class Users extends QueryBuilder
             }
         }
     }
-    public function GLogin($name,$email)
+    public function GLogin($name, $email)
     {
         array_pop($this->values);
         $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
         if ($stmt->execute()) {
             $count = $stmt->rowcount();
-            if ($count === 1) {
-                $row = $stmt->fetch();
-                if ($row['user_type'] === 'reader') {
-                    header("location:/user");
+            if ($count == 1) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($row['user_type'] == 'reader') {
+                    header('location:/user');
                 } else {
-                    header("location:/admin");
-                };
+                    header('location:/admin');
+                }
+            
             } else {
-                $this->col_name = array('name','email','provider','activated');
-                $name = "'".$name."'";
-                $email = "'".$email."'";
+                $this->col_name = array('name', 'email', 'provider', 'activated');
+                $name = "'" . $name . "'";
+                $email = "'" . $email . "'";
                 $active = "1";
-                $this->values = array($name,$email,$email,$active);
-                $stmt = parent::insert($this->table,$this->col_name,$this->values);
-                return $stmt->execute();
+                $this->values = array($name, $email, $email, $active);
+                $stmt = parent::insert($this->table, $this->col_name, $this->values);
+                return $stmt->execute();   
             }
         }
     }
