@@ -2,7 +2,7 @@
 
 class QueryBuilder
 {
-    // public $pdo;
+    public $pdo;
 
     public function __construct($pdo)
     {

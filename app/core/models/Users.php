@@ -53,6 +53,9 @@ class Users extends QueryBuilder
                 array_shift($this->col_name);
                 $insert = parent::insert($this->table, $this->col_name, $credentials);
                 $insert->execute();
+                $lastID = $this->pdo->lastInsertId();
+                $mail = new Mail();
+                $mail->sendMail($lastID, $hash);
                 echo 'You have signed up successfully';
             }
         } else {
@@ -109,8 +112,8 @@ class Users extends QueryBuilder
     }
     public function GLogin($email)
     {
-         $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
-         var_dump($stmt);
+        $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
+        var_dump($stmt);
     }
     public function GoogleAuth()
     {
