@@ -25,7 +25,10 @@ class Mail
         $this->mail->Subject = "Verification link";
         $this->mail->isHTML(true);
         $this->mail->SMTPDebug = 0;
-        $this->mailContent = ;
+        $this->base_url = "http://localhost:8080/activation?hash=${hash}&id={$lastID}";
+        $this->mailContent = 'Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account.
+            <br/> <br/> <a href ="'.$this->base_url.'">Click here to verify.</a>
+        ' ;
         $this->mail->Body = $this->mailContent;
         if (!$this->mail->send()) {
             echo 'Message could not be sent';

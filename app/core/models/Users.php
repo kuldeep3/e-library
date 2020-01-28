@@ -9,8 +9,8 @@ class Users extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'user';
-        $this->col_name = array('id', 'provider', 'provider_id', 'name', 'email', 'password', 'user_type',  'hash');
-        $this->values = array('email');
+        $this->col_name = array('id', 'provider', 'provider_id', 'activated', 'name', 'email', 'password', 'user_type',  'hash');
+        $this->values = array('email', 'hash');
         // $this->param_values = [];
     }
 
@@ -40,6 +40,7 @@ class Users extends QueryBuilder
         $credentials[2] = "'" . $secured_pass . "'";
         $credentials[3] = "'" . "reader" . "'";
         $verify_password =  $_POST['verify_password'];
+        array_pop($this->values);
         $select = parent::select($this->table, $this->col_name, $this->values, $email);
         $select->execute();
         if ($select->rowcount() == 0) {
@@ -48,6 +49,7 @@ class Users extends QueryBuilder
             } else {
                 $hash = md5(rand(0, 1000));
                 $credentials[4] = "'" . $hash . "'";
+                array_shift($this->col_name);
                 array_shift($this->col_name);
                 array_shift($this->col_name);
                 array_shift($this->col_name);
@@ -80,6 +82,7 @@ class Users extends QueryBuilder
                 $password = $_POST["password"];
             }
             if (empty($email_err) && empty($password_err)) {
+                array_pop($this->values);
                 $select = parent::select($this->table, $this->col_name, $this->values, $email);
                 if ($select->execute()) {
                     if ($select->rowcount() == 1) {
@@ -90,13 +93,21 @@ class Users extends QueryBuilder
                             $hashed_password = $row['password'];
                             $user_type = $row['user_type'];
                             if (password_verify($password, $hashed_password)) {
-                                session_start();
-                                $_SESSION["loggedin"] = true;
-                                $_SESSION['id'] = $id;
-                                $_SESSION["name"] = $name;
-                                $_SESSION["email"] = $email;
-                                $_SESSION["user_type"] = $user_type;
-                                echo "you have successfully logged in";
+                                if ($row['activated']) {
+                                    session_start();
+                                    $_SESSION["loggedin"] = true;
+                                    $_SESSION['id'] = $id;
+                                    $_SESSION["name"] = $name;
+                                    $_SESSION["email"] = $email;
+                                    $_SESSION["user_type"] = $user_type;
+                                    if ($_SESSION['user_type'] === 'reader') {
+                                        header("location:/user");
+                                    } else {
+                                        header("location:/admin");
+                                    }
+                                } else {
+                                    echo "Account not activated";
+                                }
                             } else {
                                 echo "The password you entered was not valid";
                             }
@@ -110,10 +121,29 @@ class Users extends QueryBuilder
             }
         }
     }
-    public function GLogin($email)
+    public function GLogin($name,$email)
     {
+        array_pop($this->values);
         $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
-        var_dump($stmt);
+        if ($stmt->execute()) {
+            $count = $stmt->rowcount();
+            if ($count === 1) {
+                $row = $stmt->fetch();
+                if ($row['user_type'] === 'reader') {
+                    header("location:/user");
+                } else {
+                    header("location:/admin");
+                };
+            } else {
+                $this->col_name = array('name','email','provider','activated');
+                $name = "'".$name."'";
+                $email = "'".$email."'";
+                $active = "1";
+                $this->values = array($name,$email,$email,$active);
+                $stmt = parent::insert($this->table,$this->col_name,$this->values);
+                return $stmt->execute();
+            }
+        }
     }
     public function GoogleAuth()
     {
@@ -138,6 +168,19 @@ class Users extends QueryBuilder
             //now you can use this profile info to create account in your website and make user logged in.
         } else {
             return $client->createAuthUrl();
+        }
+    }
+
+    public function activate($id, $hash)
+    {
+        array_shift($this->values);
+        $stmt = parent::select($this->table, $this->col_name, $this->values, $hash);
+        if ($stmt->execute()) {
+            $count = $stmt->rowcount();
+            if ($count == 1) {
+                $stmt = parent::update($this->table, ['activated' => '1'], 'hash', $hash);
+                return $stmt->execute();
+            }
         }
     }
 }

@@ -2,4 +2,12 @@
 
 $data = Users::GoogleAuth();
 
-App::get('database')->GLogin($data->email);
+$glogin = App::get('database')->GLogin($data->name,$data->email);
+
+ if (isset($glogin)) {
+     if ($_SESSION["user_type"] === 'reader') {
+         header("location:/user");
+     } else {
+         header("location:/admin");
+     }
+ }
