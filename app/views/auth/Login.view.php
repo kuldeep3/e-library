@@ -7,7 +7,7 @@
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Login</h4>
                 <p>
-                
+                    <?php $gmail = Users::GoogleAuth(); ?>
                     <a href="<?= $gmail ?>" class="btn btn-block btn-google" style="background-color: #EA4135;">
                         <i class="fab fa-google"></i>
                         Login Via Google

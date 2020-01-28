@@ -26,7 +26,7 @@ class Users extends QueryBuilder
     //     $password = $_POST['password'];
     //     $secured_pass = password_hash($password, PASSWORD_BCRYPT);
     //     parent::insert($this->table, $this->col_name);
-        
+
     // }
     public function insertUsers($name, $email, $password)
     {
@@ -107,16 +107,34 @@ class Users extends QueryBuilder
             }
         }
     }
-    // public function googleLogin($provider)
-    // {
-    //      $select = parent::select($this->table,$this->col_name,$this->values, $provider);
-    //      if ($select->execute()) {
-    //          if ($select->rowcount() > 0) {
+    public function GLogin($email)
+    {
+         $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
+         var_dump($stmt);
+    }
+    public function GoogleAuth()
+    {
+        $googleData = App::get('config')['google'];
+        $client = new Google_Client();
+        $client->setClientId($googleData['GOOGLE_CLIENT_ID']);
+        $client->setClientSecret($googleData['GOOGLE_CLIENT_SECRET']);
+        $client->setRedirectUri($googleData['GOOGLE_REDIRECT_URL']);
+        $client->addScope("email");
+        $client->addScope("profile");
 
-    //          }
-    //      } else {
-    //          echo 'something went wrong';
-    //      }
+        //authenticate code from Google OAuth Flow
+        if (isset($_GET['code'])) {
+            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+            $client->setAccessToken($token['access_token']);
 
-    // }
+            // get profile info
+            $google_oauth = new Google_Service_Oauth2($client);
+            $google_account_info = $google_oauth->userinfo->get();
+            return $google_account_info;
+
+            //now you can use this profile info to create account in your website and make user logged in.
+        } else {
+            return $client->createAuthUrl();
+        }
+    }
 }
