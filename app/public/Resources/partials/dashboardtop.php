@@ -37,7 +37,7 @@
                 <h1><a href="index.html" class="logo">Admin <span>Dashboard</span></a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                        <a href="/admin"><span class="fa fa-home mr-3"></span>Home</a>
+                        <a href="#"><span class="fa fa-home mr-3"></span>Home</a>
                     </li>
                     <li>
                         <a href="/books"><span class="fa fa-book mr-3"></span> Books</a>

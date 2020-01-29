@@ -15,6 +15,9 @@
 App::bind('config', require 'config.php');
 // die(var_dump(App::get('config')['google']));
 
-App::bind('database', new Users(
+App::bind('databaseUser', new Users(
+    Connection::make(App::get('config')['database'])
+));
+App::bind('databaseBook', new Books(
     Connection::make(App::get('config')['database'])
 ));

@@ -3,7 +3,7 @@
 $hash = $_GET['hash'];
 $id = $_GET['id'];
 
-$results = App::get('database')->activate($id, $hash);
+$results = App::get('databaseUser')->activate($id, $hash);
 if (isset($results)) {
     echo "<script>window.setTimeout(function() {
         alert('Account have been verified');

@@ -129,20 +129,45 @@ class Users extends QueryBuilder
             $count = $stmt->rowcount();
             if ($count == 1) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($row['user_type'] == 'reader') {
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['user_type'] = $row['user_type'];
+                if ($_SESSION['user_type'] == 'reader') {
                     header('location:/user');
                 } else {
                     header('location:/admin');
                 }
-            
             } else {
                 $this->col_name = array('name', 'email', 'provider', 'activated');
                 $name = "'" . $name . "'";
-                $email = "'" . $email . "'";
+                $emailnew = "'" . $email . "'";
                 $active = "1";
-                $this->values = array($name, $email, $email, $active);
+                $this->values = array($name, $emailnew, $emailnew, $active);
                 $stmt = parent::insert($this->table, $this->col_name, $this->values);
-                return $stmt->execute();   
+                $stmt->execute();
+                $this->values = array('email');
+                array_unshift($this->col_name, 'id');
+                array_push($this->col_name, 'user_type');
+                $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
+                $stmt->execute();
+                $count = $stmt->rowcount();
+                if ($count == 1) {
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    session_start();
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['user_type'] = $row['user_type'];
+                    if ($_SESSION['user_type'] == 'reader') {
+                        header('location: /user');
+                    } else {
+                        header('location: /admin');
+                    }
+                }
             }
         }
     }
