@@ -3,13 +3,14 @@
 // if (!isset($_SESSION['user_type'])) {
 //     header("location: /");
 // }
+session_start();
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Admin Dashboard</title>
+    <title><?php echo($_SESSION['user_type']); ?> Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -34,17 +35,19 @@
                 </button>
             </div>
             <div class="p-4">
-                <h1><a href="index.html" class="logo">Admin <span>Dashboard</span></a></h1>
+                <h1><a href="#" class="logo"><?php echo $_SESSION['name']; ?></a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li>
+                    <!-- <li>
                         <a href="#"><span class="fa fa-home mr-3"></span>Home</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="/books"><span class="fa fa-book mr-3"></span> Books</a>
                     </li>
+                    <?php if($_SESSION['user_type'] == 'admin'): ?>
                     <li>
-                        <a href="#readers"><span class="fa fa-user mr-3"></span> Readers</a>
+                        <a href="listuser"><span class="fa fa-user mr-3"></span> Readers</a>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="/logout"><span class="fa fa-sign-out mr-3"></span> Logout</a>
                     </li>

@@ -15,7 +15,7 @@ class QueryBuilder
         $col_name = implode(',', $col_name);
         $stmt = $this->pdo->prepare("SELECT ${col_name} FROM ${table}");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function insert($table, $col_name, $col_values)
     {

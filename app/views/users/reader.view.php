@@ -1,10 +1,11 @@
 <?php
-session_start();
+// session_start();
+
+
+require 'app/public/Resources/partials/dashboardtop.php';
 if ($_SESSION['user_type'] != 'reader') {
     header('location:/login');
 }
-
-require 'app/public/Resources/partials/dashboardtop.php';
 ?>
 <!-- Page Content  -->
 <div id="content" class="p-4 p-md-5 pt-5">

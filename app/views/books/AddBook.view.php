@@ -1,19 +1,19 @@
 <?php
-$target_dir = "app/public/Resources/img/";
-$target_file = $target_dir . basename($_FILES["image"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
-if(isset($_POST["bookAdded"])) {
+if (isset($_POST['bookAdded'])) {
+    $target_dir = "app/public/Resources/img/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if($check !== false) {
+    if ($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         echo "File is not an image.";
         $uploadOk = 0;
     }
-}
+
 // Check if file already exists
 if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
@@ -25,22 +25,26 @@ if ($_FILES["image"]["size"] > 500000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
+if (
+    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif"
+) {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+    // if everything is ok, try to upload file
 } else {
     App::get('databaseBook')->addBook();
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+        header('location:/books');
+        echo "The file " . basename($_FILES["image"]["name"]) . " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
+}
 }
 ?>
 
@@ -56,7 +60,7 @@ if ($uploadOk == 0) {
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Add Book</h4>
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group input-group">
                         <input type="text" class="form-control" name="name" placeholder="Book Name" required>
                     </div>
@@ -72,7 +76,7 @@ if ($uploadOk == 0) {
                     </div>
                     <br> <br>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block" type="submit" name="bookAdded">Add Book</button>
+                        <button class="btn btn-primary btn-block" type="submit" name="bookAdded" value="submit">Add Book</button>
                     </div>
                 </form>
             </article>
