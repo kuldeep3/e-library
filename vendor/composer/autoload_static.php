@@ -107,6 +107,7 @@ class ComposerStaticInit698024c530b38d88f58dc02c927f595c
     public static $classMap = array (
         'App' => __DIR__ . '/../..' . '/app/database/App.php',
         'Books' => __DIR__ . '/../..' . '/app/core/models/Books.php',
+        'BooksCategory' => __DIR__ . '/../..' . '/app/core/models/BooksCategory.php',
         'ComposerAutoloaderInit698024c530b38d88f58dc02c927f595c' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit698024c530b38d88f58dc02c927f595c' => __DIR__ . '/..' . '/composer/autoload_static.php',

@@ -8,8 +8,8 @@ class Users extends QueryBuilder
 
     {
         parent::__construct($pdo);
-        $this->table = 'user';
-        $this->col_name = array('id', 'provider', 'provider_id', 'activated', 'name', 'email', 'password', 'user_type',  'hash');
+        $this->table = 'users';
+        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'hash');
         $this->values = array('email', 'hash');
         // $this->param_values = [];
     }
@@ -38,7 +38,7 @@ class Users extends QueryBuilder
         $credentials[0] = "'" . trim($_POST['name']) . "'";
         $credentials[1] = "'" . trim($_POST['email']) . "'";
         $credentials[2] = "'" . $secured_pass . "'";
-        $credentials[3] = "'" . "reader" . "'";
+        $credentials[3] = "'" . "Reader" . "'";
         $verify_password =  $_POST['verify_password'];
         array_pop($this->values);
         $select = parent::select($this->table, $this->col_name, $this->values, $email);
@@ -49,7 +49,6 @@ class Users extends QueryBuilder
             } else {
                 $hash = md5(rand(0, 1000));
                 $credentials[4] = "'" . $hash . "'";
-                array_shift($this->col_name);
                 array_shift($this->col_name);
                 array_shift($this->col_name);
                 array_shift($this->col_name);
@@ -100,7 +99,7 @@ class Users extends QueryBuilder
                                     $_SESSION["name"] = $name;
                                     $_SESSION["email"] = $email;
                                     $_SESSION["user_type"] = $user_type;
-                                    if ($_SESSION['user_type'] === 'reader') {
+                                    if ($_SESSION['user_type'] === 'Reader') {
                                         header("location:/user");
                                     } else {
                                         header("location:/admin");
@@ -135,7 +134,7 @@ class Users extends QueryBuilder
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['user_type'] = $row['user_type'];
-                if ($_SESSION['user_type'] == 'reader') {
+                if ($_SESSION['user_type'] == 'Reader') {
                     header('location:/user');
                 } else {
                     header('location:/admin');
@@ -162,7 +161,7 @@ class Users extends QueryBuilder
                     $_SESSION['name'] = $row['name'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['user_type'] = $row['user_type'];
-                    if ($_SESSION['user_type'] == 'reader') {
+                    if ($_SESSION['user_type'] == 'Reader') {
                         header('location: /user');
                     } else {
                         header('location: /admin');

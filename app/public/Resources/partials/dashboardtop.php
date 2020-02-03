@@ -20,6 +20,38 @@ session_start();
     <link rel="stylesheet" href="app/public/Resources/css/style1.css">
 
 </head>
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+    <a class="navbar-brand" href="#">
+        <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
+    </a>
+
+
+
+    <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo03"> -->
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <!-- <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+        <a class="txt2 mr-sm-2" href="#" style="color: black;">
+            New to e-Library
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background:grey;">Search</button> -->
+    </div>
+    <!-- </div> -->
+</nav>
 
 <body>
     <div>
@@ -27,7 +59,7 @@ session_start();
     </div>
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar">
+        <nav id="sidebar" style="background: #58B747;">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fa fa-bars"></i>
@@ -41,15 +73,15 @@ session_start();
                         <a href="#"><span class="fa fa-home mr-3"></span>Home</a>
                     </li> -->
                     <li>
-                        <a href="/books"><span class="fa fa-book mr-3"></span> Books</a>
+                        <a href="/books"><span class="fa fa-book mr-3" style="color: black;"></span> Books</a>
                     </li>
-                    <?php if($_SESSION['user_type'] == 'admin'): ?>
+                    <?php if($_SESSION['user_type'] == 'Admin'): ?>
                     <li>
-                        <a href="listuser"><span class="fa fa-user mr-3"></span> Readers</a>
+                        <a href="listuser"><span class="fa fa-user mr-3" style="color: black;"></span> Readers</a>
                     </li>
                     <?php endif; ?>
                     <li>
-                        <a href="/logout"><span class="fa fa-sign-out mr-3"></span> Logout</a>
+                        <a href="/logout" style="color: rgba(207, 0, 15, 1)" ><span class="fa fa-sign-out mr-3" style="color: red;"></span> Logout</a>
                     </li>
 
                 </ul>

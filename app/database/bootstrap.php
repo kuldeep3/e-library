@@ -21,3 +21,6 @@ App::bind('databaseUser', new Users(
 App::bind('databaseBook', new Books(
     Connection::make(App::get('config')['database'])
 ));
+App::bind('databaseCat', new BooksCategory(
+    Connection::make(App::get('config')['database'])
+));

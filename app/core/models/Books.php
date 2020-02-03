@@ -7,6 +7,7 @@ class Books extends QueryBuilder
         parent::__construct($pdo);
         $this->table = 'books';
         $this->col_name = array('id', 'name', 'author', 'edition', 'image');
+        $this->values = [];
     }
     public function listBooks()
     {
@@ -22,4 +23,20 @@ class Books extends QueryBuilder
         $stmt = parent::insert($this->table,$this->col_name,$values);
         $stmt->execute();
     }
+    public function deleteBook($id) {
+        return parent::deleteAll($this->table,'id',$id);
+    }
+    public function addCategories($book_id,$categories) {
+        $this->col_name = array('book_id','categoty_id');
+        foreach ($categories as $category) {
+            $this->values = ["'${book_id}'","'${category}'"];
+            parent::insert('has_category',$this->col_name,$this->values);
+        }
+    }
+    public function deleteAllCategories($book_id) {
+        parent::deleteAll('has_category','bid',$book_id);
+    }
+    // public function listCategories($book_id) {
+    //     return parent::
+    // }
 }
