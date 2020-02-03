@@ -22,15 +22,18 @@ class Books extends QueryBuilder
         array_shift($this->col_name);
         $stmt = parent::insert($this->table,$this->col_name,$values);
         $stmt->execute();
+        $book_id = $this->pdo->lastInsertId();
+        return $book_id;
     }
     public function deleteBook($id) {
         return parent::deleteAll($this->table,'id',$id);
     }
     public function addCategories($book_id,$categories) {
-        $this->col_name = array('book_id','categoty_id');
+        $this->col_name = array('book_id','category_id');
         foreach ($categories as $category) {
             $this->values = ["'${book_id}'","'${category}'"];
-            parent::insert('has_category',$this->col_name,$this->values);
+            $res = parent::insert('has_category',$this->col_name,$this->values);
+            $res->execute();
         }
     }
     public function deleteAllCategories($book_id) {

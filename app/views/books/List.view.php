@@ -30,7 +30,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
                         </p>
                         <?php if ($_SESSION['user_type'] == 'Admin') :  ?>
                             <a href="/edit" class="card-link" style="color: green;">Edit</a>
-                            <a href="#" class="card-link" style="color: red;">Delete</a>
+                            <a href="/delete" class="card-link" style="color: red;">Delete</a>
                         <?php endif; ?>
                         <?php if ($_SESSION['user_type'] == 'Reader') :  ?>
                             <div class="form-check">
