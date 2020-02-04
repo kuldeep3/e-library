@@ -13,6 +13,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
     <h2 class="mb-4">Books List</h2>
     <div class="card-deck">
         <?php $books = App::get('databaseBook')->listBooks();
+        $bookss = App::get('databaseBook')->listBookss();
         foreach ($books as $row) :
         ?>
 
@@ -27,6 +28,17 @@ require 'app/public/Resources/partials/dashboardtop.php';
                         </h5>
                         <p class="card-text">
                             <?php echo ($row['author']); ?>
+                        </p>
+                        <p class="card-text">
+
+                            <?php
+                            $i = 0;
+                            foreach ($bookss as $cat) :
+                                $cat_name = $cat['category_id'];
+                                $stmt = App::get('databaseBook')->catName($cat_name); ?>
+                                <span class="badge badge-dark" style="cursor: pointer;"><?php echo $stmt['name']; ?></span>
+                            <?php endforeach;
+                            ?>
                         </p>
                         <?php if ($_SESSION['user_type'] == 'Admin') :  ?>
                             <a href="/edit" class="card-link" style="color: green;">Edit</a>
