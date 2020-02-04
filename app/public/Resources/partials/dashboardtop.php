@@ -43,10 +43,7 @@ session_start();
             </li> -->
     </ul>
     <div class="form-inline my-2 my-lg-0">
-        <a class="txt2 mr-sm-2" href="#" style="color: black;">
-            New to e-Library
-            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-        </a>
+        
         <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background:grey;">Search</button> -->
     </div>
@@ -67,7 +64,12 @@ session_start();
                 </button>
             </div>
             <div class="p-4">
-                <h1><a href="#" class="logo"><?php echo $_SESSION['name']; ?></a></h1>
+                <?php if($_SESSION['user_type'] == 'Admin'): ?>
+                <h1><a href="/admin" class="logo"><?php echo $_SESSION['name']; ?></a></h1>
+                <?php endif; ?>
+                <?php if($_SESSION['user_type'] == 'Reader'): ?>
+                <h1><a href="/user" class="logo"><?php echo $_SESSION['name']; ?></a></h1>
+                <?php endif; ?>
                 <ul class="list-unstyled components mb-5">
                     <!-- <li>
                         <a href="#"><span class="fa fa-home mr-3"></span>Home</a>

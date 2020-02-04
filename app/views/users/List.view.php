@@ -19,6 +19,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">User Type</th>
+                    <th scope="col">Created On</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                         <td><?php echo ($row['name']); ?></td>
                         <td><?php echo ($row['email']); ?></td>
                         <td><?php echo ($row['user_type']); ?></td>
+                        <td><?php echo ($row['created_at']); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

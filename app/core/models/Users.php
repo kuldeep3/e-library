@@ -9,7 +9,7 @@ class Users extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'users';
-        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'hash');
+        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'created_at', 'hash');
         $this->values = array('email', 'hash');
         // $this->param_values = [];
     }

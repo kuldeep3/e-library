@@ -6,5 +6,5 @@
 
 session_destroy();
 
-header("location:/login");
+header("location:/");
 exit;

@@ -13,6 +13,10 @@ class Books extends QueryBuilder
     {
         return parent::list($this->table, $this->col_name);
     }
+    public function selectBook($id) {
+        $this->values = array('id');
+        return parent::select($this->table,$this->col_name,$this->values,$id);
+    }
     public function addBook()
     {
         $values = [];
@@ -28,6 +32,7 @@ class Books extends QueryBuilder
     }
     public function deleteBook($id)
     {
+        $this->deleteAllCategories($id);
         return parent::deleteAll($this->table, 'id', $id);
     }
     public function addCategories($book_id, $categories)
@@ -41,7 +46,7 @@ class Books extends QueryBuilder
     }
     public function deleteAllCategories($book_id)
     {
-        parent::deleteAll('has_category', 'bid', $book_id);
+        parent::deleteAll('has_category', 'book_id', $book_id);
     }
     public function listBookss()
     {
@@ -65,5 +70,21 @@ class Books extends QueryBuilder
         $stmt = parent::select('categories', $this->col_name, $this->values, $cat_name);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function updateBook($booknames, $bookvalues, $id)
+    {
+        $i = 0;
+        $update = [];
+        while (isset($booknames[$i])) {
+            $update += [$booknames[$i] => $bookvalues[$i]];
+            $i++;
+        }
+        return (parent::update($this->table, $update, 'id', $id));
+    }
+    public function fetchCategories($book_id)
+    {
+        $this->col_name = array('category_id');
+        $this->values = array('book_id');
+        return parent::select('has_category', $this->col_name, $this->values, $book_id);
     }
 }
