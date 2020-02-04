@@ -14,8 +14,9 @@ require 'app/public/Resources/partials/dashboardtop.php';
     <div class="card-deck">
         <?php $books = App::get('databaseBook')->listBooks();
         $bookss = App::get('databaseBook')->listBookss();
-        var_dump($bookss);
+        $i = -1;
         foreach ($books as $row) :
+            $i++;
         ?>
             <div class="card-column">
                 <br>
@@ -32,15 +33,14 @@ require 'app/public/Resources/partials/dashboardtop.php';
                         <p class="card-text">
 
                             <?php
-                            foreach ($bookss as $key) :
-                                var_dump($key);
-                                // $cat_name = $key[0]['category_id'];
-                                // $stmt = App::get('databaseBook')->catName($cat_name); ?>
-                                <!-- <span class="badge badge-dark" style="cursor: pointer;"> -->
-                                <?php 
-                                // echo $stmt['name']; 
-                                ?>
-                            <!-- </span> -->
+                            foreach ($bookss[$i] as $key) :
+                                $cat_name = $key['category_id'];
+                                $stmt = App::get('databaseBook')->catName($cat_name);  ?>
+                                <span class="badge badge-dark" style="cursor: pointer;">
+                                    <?php
+                                    echo $stmt['name'];
+                                    ?>
+                                </span>
                             <?php endforeach;
                             ?>
                         </p>
