@@ -44,23 +44,24 @@
             // if everything is ok, try to upload file
         } else {
             $i = 1;
-            $categories =[];
-            while (isset($_POST[$i])) {
-                array_push($categories,$_POST[$i]);
-                $i++;
+            $categories = [];
+            while ($i++ < 10) {
+                if (isset($_POST[$i-1])) 
+                    array_push($categories, $_POST[$i-1]);     
+                   
             }
-                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 
-                    if ($book_id = App::get('databaseBook')->addBook()) {
-                    App::get('databaseBook')->addCategories($book_id, $categories);
-                        header('location:/books');
-                    }
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 
-                    echo "The file " . basename($_FILES["image"]["name"]) . " has been uploaded.";
-                } else {
-                    echo "Sorry, there was an error uploading your file.";
+                if ($book_id = App::get('databaseBook')->addBook()) {
+                    $stmt = App::get('databaseBook')->addCategories($book_id, $categories);
+                    header('location:/books');
                 }
-            
+
+                echo "The file " . basename($_FILES["image"]["name"]) . " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         }
     }
     ?>

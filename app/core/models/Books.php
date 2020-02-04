@@ -45,16 +45,18 @@ class Books extends QueryBuilder
     }
     public function listBookss()
     {
-
         $stmt = parent::list($this->table, $this->col_name);
-        foreach ($stmt as $row) :
-            $id = $row['id'];
-        endforeach;
         $this->col_name = array('category_id');
         $this->values = array('book_id');
-        $stmt = parent::select('has_category', $this->col_name, $this->values, $id);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $cat = [];
+        foreach ($stmt as $row) :
+            $id = $row['id'];
+            $stmt = parent::select('has_category', $this->col_name, $this->values, $id);
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            array_push($cat, $res);
+        endforeach;
+        return $cat;
     }
     public function catName($cat_name)
     {
