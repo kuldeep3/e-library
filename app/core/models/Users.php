@@ -93,7 +93,7 @@ class Users extends QueryBuilder
                             $user_type = $row['user_type'];
                             if (password_verify($password, $hashed_password)) {
                                 if ($row['activated']) {
-                                    //session_start();
+                                    session_start();
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION['id'] = $id;
                                     $_SESSION["name"] = $name;

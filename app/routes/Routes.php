@@ -1,7 +1,7 @@
 <?php
 
 $router->define([
-    '' => 'app/controllers/auth/Login.controller.php',
+    '' => 'app/views/auth/Login.view.php',
     'signup' => 'app/controllers/auth/Signup.controller.php',
     'gmail' => 'app/controllers/auth/GmailAuth.controller.php',
     'activation' => 'app/controllers/auth/Verification.controller.php',
@@ -13,7 +13,8 @@ $router->define([
     'listuser' => 'app/views/users/List.view.php',
     'edit' => 'app/controllers/books/EditBook.controller.php',
     'delete' => 'app/controllers/books/DeleteBook.controller.php',
-    'deleteuser' => 'app/controllers/users/DeleteUser.controller.php'
+    'deleteuser' => 'app/controllers/users/DeleteUser.controller.php',
+    'login' => 'app/controllers/auth/Login.controller.php'
 ]);
 // $router->post('' , 'app/controllers/auth/Signup.controller.php');
 // $router->get('login', 'app/controllers/auth/Login.controller.php');
