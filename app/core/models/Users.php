@@ -9,7 +9,7 @@ class Users extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'users';
-        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'hash','created_at');
+        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'hash', 'created_at');
         $this->values = array('email', 'hash');
         // $this->param_values = [];
     }
@@ -68,7 +68,6 @@ class Users extends QueryBuilder
 
     public function verifyUser($email)
     {
-        // $email = $password = "";
         $email_err = $password_err = "";
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (empty(trim($_POST["email"]))) {
@@ -94,7 +93,7 @@ class Users extends QueryBuilder
                             $user_type = $row['user_type'];
                             if (password_verify($password, $hashed_password)) {
                                 if ($row['activated']) {
-                                    session_start();
+                                    //session_start();
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION['id'] = $id;
                                     $_SESSION["name"] = $name;
@@ -209,11 +208,13 @@ class Users extends QueryBuilder
             }
         }
     }
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
         return parent::deleteAll($this->table, 'id', $id);
     }
-    public function selectUser($id) {
+    public function selectUser($id)
+    {
         $this->values = array('id');
-        return parent::select($this->table,$this->col_name,$this->values,$id);
+        return parent::select($this->table, $this->col_name, $this->values, $id);
     }
 }

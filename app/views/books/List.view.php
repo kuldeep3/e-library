@@ -30,7 +30,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
     <?php endif; ?>
     <?php if ($_SESSION['user_type'] == 'Reader') : ?>
         <div class="searchbar" style="float: right;">
-            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
+            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search by Book name..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
     <?php endif; ?>
@@ -46,7 +46,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
             <div class="card-column">
                 <br>
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="app/public/Resources/img/<?= $row['image'] ?>" alt="" style="max-height: 20em;">
+                    <img class="card-img-top" src="app/public/Resources/img/<?= $row['image'] ?>" alt="" >
                     <div class="card-body">
                         <h5 class="card-title">
                             <?php echo ($row['name']);

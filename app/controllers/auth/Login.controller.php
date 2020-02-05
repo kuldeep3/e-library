@@ -6,10 +6,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         exit;
     } elseif ($_SESSION['user_type'] === 'Admin') {
         header("location: /admin");
-    } 
+    }
 }
 require 'app/views/auth/Login.view.php';
-
 if (isset($_POST['login'])) {
     App::get('databaseUser')->verifyUser($_POST['email']);
 } else {
