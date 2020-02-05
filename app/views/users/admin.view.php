@@ -3,7 +3,7 @@
 require 'app/public/Resources/partials/dashboardtop.php';
 
 if ($_SESSION['user_type'] != 'Admin') {
-  header('location:/login');
+  header('location:/');
 }
 ?>
 <!-- Page Content  -->

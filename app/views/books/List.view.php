@@ -3,6 +3,8 @@
 require 'app/public/Resources/partials/dashboardtop.php';
 ?>
 
+<link rel="stylesheet" href="app/public/Resources/css/search.css">
+
 <!-- Page Content  -->
 <div id="content" class="p-4 p-md-5 pt-5">
     <?php if ($_SESSION['user_type'] == 'Admin') : ?>
@@ -10,8 +12,15 @@ require 'app/public/Resources/partials/dashboardtop.php';
             <button type="submit" class="btn btn-outline-primary" name="addbook" style="float: right;">Add Book</button>
         </form>
     <?php endif; ?>
+    <?php if ($_SESSION['user_type'] == 'Reader') : ?>
+        <div class="searchbar" style="float: right;">
+            <input class="search_input" type="text" name="" placeholder="Search...">
+            <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+        </div>
+    <?php endif; ?>
     <h2 class="mb-4">Books List</h2>
-    <div class="card-deck">
+
+    <div class="card-deck" id="mybooks">
         <?php $books = App::get('databaseBook')->listBooks();
         $bookss = App::get('databaseBook')->listBookss();
         $i = -1;

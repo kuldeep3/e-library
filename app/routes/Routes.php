@@ -12,7 +12,8 @@ $router->define([
     'addBook' => 'app/controllers/books/Addbook.controller.php',
     'listuser' => 'app/views/users/List.view.php',
     'edit' => 'app/controllers/books/EditBook.controller.php',
-    'delete' => 'app/controllers/books/DeleteBook.controller.php'
+    'delete' => 'app/controllers/books/DeleteBook.controller.php',
+    'deleteuser' => 'app/controllers/users/DeleteUser.controller.php'
 ]);
 // $router->post('' , 'app/controllers/auth/Signup.controller.php');
 // $router->get('login', 'app/controllers/auth/Login.controller.php');

@@ -9,7 +9,7 @@ class Users extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'users';
-        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'created_at', 'hash');
+        $this->col_name = array('id', 'provider', 'activated', 'name', 'email', 'password', 'user_type', 'hash','created_at');
         $this->values = array('email', 'hash');
         // $this->param_values = [];
     }
@@ -52,6 +52,7 @@ class Users extends QueryBuilder
                 array_shift($this->col_name);
                 array_shift($this->col_name);
                 array_shift($this->col_name);
+                array_pop($this->col_name);
                 $insert = parent::insert($this->table, $this->col_name, $credentials);
                 $insert->execute();
                 $lastID = $this->pdo->lastInsertId();
@@ -207,5 +208,12 @@ class Users extends QueryBuilder
                 return $stmt->execute();
             }
         }
+    }
+    public function deleteUser($id) {
+        return parent::deleteAll($this->table, 'id', $id);
+    }
+    public function selectUser($id) {
+        $this->values = array('id');
+        return parent::select($this->table,$this->col_name,$this->values,$id);
     }
 }

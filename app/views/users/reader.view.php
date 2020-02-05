@@ -4,7 +4,7 @@
 
 require 'app/public/Resources/partials/dashboardtop.php';
 if ($_SESSION['user_type'] != 'Reader') {
-    header('location:/login');
+    header('location:/');
 }
 ?>
 <!-- Page Content  -->

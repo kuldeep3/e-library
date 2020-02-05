@@ -46,9 +46,8 @@
             $i = 1;
             $categories = [];
             while ($i++ < 10) {
-                if (isset($_POST[$i-1])) 
-                    array_push($categories, $_POST[$i-1]);     
-                   
+                if (isset($_POST[$i - 1]))
+                    array_push($categories, $_POST[$i - 1]);
             }
 
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
