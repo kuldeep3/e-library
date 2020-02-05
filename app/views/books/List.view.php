@@ -4,7 +4,23 @@ require 'app/public/Resources/partials/dashboardtop.php';
 ?>
 
 <link rel="stylesheet" href="app/public/Resources/css/search.css">
-
+<script>
+    function myFunction() {
+        var input, filter, cards, cardContainer, h5, title, i;
+        input = document.getElementById("myFilter");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("mybooks");
+        cards = cardContainer.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector(".card-body h5.card-title");
+            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
 <!-- Page Content  -->
 <div id="content" class="p-4 p-md-5 pt-5">
     <?php if ($_SESSION['user_type'] == 'Admin') : ?>
@@ -14,7 +30,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
     <?php endif; ?>
     <?php if ($_SESSION['user_type'] == 'Reader') : ?>
         <div class="searchbar" style="float: right;">
-            <input class="search_input" type="text" name="" placeholder="Search...">
+            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
     <?php endif; ?>
