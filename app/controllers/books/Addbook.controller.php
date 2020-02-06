@@ -3,7 +3,7 @@
         session_start();
     }
     if ($_SESSION['user_type'] != 'Admin') {
-        header("location:/login");
+        header("location:/");
     }
 
     if (isset($_POST['bookAdded'])) {

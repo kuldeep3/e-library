@@ -34,7 +34,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
     <?php endif; ?>
-    <h2 class="mb-4">Books List</h2>
+    <h2 class="mb-4">Available Books</h2>
 
     <div class="card-deck" id="mybooks">
         <?php $books = App::get('databaseBook')->listBooks();

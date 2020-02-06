@@ -11,12 +11,13 @@ $router->define([
     'books' => 'app/controllers/books/Books.controller.php',
     'addBook' => 'app/views/books/AddBook.view.php',
     'listuser' => 'app/views/users/List.view.php',
-    'edit' => 'app/controllers/books/EditBook.controller.php',
+    'edit' => 'app/views/books/EditBook.view.php',
     'delete' => 'app/controllers/books/DeleteBook.controller.php',
     'deleteuser' => 'app/controllers/users/DeleteUser.controller.php',
     'login' => 'app/controllers/auth/Login.controller.php',
     'signed' => 'app/controllers/auth/Signup.controller.php',
-    'AddBook' => 'app/controllers/books/Addbook.controller.php'
+    'AddBook' => 'app/controllers/books/Addbook.controller.php',
+    'editbook' => 'app/controllers/books/EditBook.controller.php'
 ]);
 // $router->post('' , 'app/controllers/auth/Signup.controller.php');
 // $router->get('login', 'app/controllers/auth/Login.controller.php');

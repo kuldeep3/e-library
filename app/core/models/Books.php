@@ -13,9 +13,10 @@ class Books extends QueryBuilder
     {
         return parent::list($this->table, $this->col_name);
     }
-    public function selectBook($id) {
+    public function selectBook($id)
+    {
         $this->values = array('id');
-        return parent::select($this->table,$this->col_name,$this->values,$id);
+        return parent::select($this->table, $this->col_name, $this->values, $id);
     }
     public function addBook()
     {
@@ -46,7 +47,7 @@ class Books extends QueryBuilder
     }
     public function deleteAllCategories($book_id)
     {
-        parent::deleteAll('has_category', 'book_id', $book_id);
+        return parent::deleteAll('has_category', 'book_id', $book_id);
     }
     public function listBookss()
     {

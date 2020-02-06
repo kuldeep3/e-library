@@ -64,7 +64,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
         <div class="container">
             <div class="wrap-login100" style="padding-top: 80px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-                    <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
+                    <img id="blah" src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
                 </div>
 
                 <form method="post" action="/AddBook" class="login100-form" enctype="multipart/form-data" style="float: right;">
@@ -97,7 +97,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                     <div class="wrap-input100">
                         <div class="input100" style="padding-top: 15px;"> <span style="color: #999999; cursor:default;">Book Categories</span>
                             <span class="symbol-input100"">
-                                <i class="fa fa-file" aria-hidden="true"></i>
+                                <i class=" fa fa-file" aria-hidden="true"></i>
                             </span>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                     endforeach;
                     ?>
                     <div class="wrap-input100">
-                        <input class="input100 my" type="file" name="image" style="padding-top: 10px;" required>
+                        <input class="input100 my" type="file" name="image" style="padding-top: 10px;" onchange="readURL(this);" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-file" aria-hidden="true"></i>
@@ -127,6 +127,21 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                         </button>
                     </div>
                 </form>
+                <script>
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function(e) {
+                                $('#blah')
+                                    .attr('src', e.target.result);
+                            };
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
+
             </div>
         </div>
     </div>

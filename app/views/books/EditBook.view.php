@@ -1,8 +1,19 @@
 <?php
 $cat = App::get('databaseCat')->listCategories();
+$bid = $_GET['bid'];
 $book = App::get('databaseBook')->selectBook($_GET['bid']);
+
 $book->execute();
-$book = $book->fetch(PDO::FETCH_ASSOC);?>
+$book = $book->fetch(PDO::FETCH_ASSOC);
+$category = App::get('databaseBook')->fetchCategories($_GET['bid']);
+$category->execute();
+$ch = $category->fetchAll(PDO::FETCH_ASSOC);
+$cats = [];
+foreach ($ch as $key) {
+    array_push($cats, $key['category_id']);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,12 +46,12 @@ $book = $book->fetch(PDO::FETCH_ASSOC);?>
 
 
 
-   
+
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     </ul>
     <div class="form-inline my-2 my-lg-0">
     </div>
-   
+
 </nav>
 
 <body>
@@ -52,8 +63,8 @@ $book = $book->fetch(PDO::FETCH_ASSOC);?>
                     <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
                 </div>
 
-                <form method="post" class="login100-form" enctype="multipart/form-data" style="float: right;">
-                   
+                <form method="post" action="/editbook" class="login100-form" enctype="multipart/form-data" style="float: right;">
+
                     <div class="wrap-input100">
                         <input class="input100" type="text" name="name" value="<?php echo $book['name']; ?>" required>
                         <span class="focus-input100"></span>
@@ -84,9 +95,15 @@ $book = $book->fetch(PDO::FETCH_ASSOC);?>
                         </div>
                     </div>
                     <?php $i = 1;
-                    foreach ($cat as $row) : ?>
+                    foreach ($cat as $row) :
+                        $check = null;
+                        $cid = $row['id'];
+                        if (in_array($cid, $cats)) {
+                            $check = 'checked';
+                        }
+                    ?>
                         <label for=" <?php $row['id'] ?>">
-                            <input type="checkbox" class="mr-1" value="<?php echo ($row['id']); ?>" name="<?php echo $i ?>">
+                            <input type="checkbox" <?php echo $check; ?> class="mr-1" value="<?php echo ($row['id']); ?>" name="<?php echo $i ?>">
                             <?php
                             echo ($row['name']);
                             $i++;
@@ -94,7 +111,9 @@ $book = $book->fetch(PDO::FETCH_ASSOC);?>
                         </label>
                     <?php
                     endforeach;
+
                     ?>
+
                     <div class="wrap-input100">
                         <input class="input100 my" type="file" name="image" value="<?php echo $book['image']; ?>" style="padding-top: 10px;" required>
                         <span class="focus-input100"></span>
@@ -102,9 +121,11 @@ $book = $book->fetch(PDO::FETCH_ASSOC);?>
                             <i class="fa fa-file" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <?php $bid = $_GET['bid']; ?>
+                    <input type="hidden" name="bid" value="<?php echo $bid; ?>">
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" name="bookAdded" value="submit">
+                        <button class="login100-form-btn" name="bookUpdated" value="submit">
                             Update Book
                         </button>
                     </div>
