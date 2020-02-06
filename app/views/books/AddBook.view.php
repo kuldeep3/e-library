@@ -67,7 +67,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                     <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
                 </div>
 
-                <form method="post" class="login100-form" enctype="multipart/form-data" style="float: right;">
+                <form method="post" action="/AddBook" class="login100-form" enctype="multipart/form-data" style="float: right;">
                     <!-- <span class="login100-form-title" style="padding-bottom: 50px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>

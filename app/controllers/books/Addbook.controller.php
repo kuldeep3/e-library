@@ -64,6 +64,3 @@
         }
     }
     ?>
-    <?php
-    require 'app/views/books/addBook.view.php';
-    ?>

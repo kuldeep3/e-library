@@ -89,6 +89,7 @@
           </div>
           <form
             method="post"
+            action="/signed"
             class="login100-form validate-form"
             style="float: right;"
           >

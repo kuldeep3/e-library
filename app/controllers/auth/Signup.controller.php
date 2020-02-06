@@ -1,7 +1,5 @@
 <?php
 
-require 'app/views/auth/Signup.view.php';
-
 if (isset($_POST['register'])) {
     App::get('databaseUser')->insertUsers($_POST['name'],$_POST['email'],$_POST['password']);
 } else {
