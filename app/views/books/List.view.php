@@ -1,5 +1,6 @@
 <?php
-
+// var_dump(App::get('databaseUser')->fetchBooks('56'));
+// die();
 require 'app/public/Resources/partials/dashboardtop.php';
 ?>
 
@@ -39,6 +40,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
     <div class="card-deck" id="mybooks">
         <?php $books = App::get('databaseBook')->listBooks();
         $bookss = App::get('databaseBook')->listBookss();
+        $uid = $_SESSION['id'];
         $i = -1;
         foreach ($books as $row) :
             $i++;
@@ -46,7 +48,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
             <div class="card-column">
                 <br>
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="app/public/Resources/img/<?= $row['image'] ?>" alt="" >
+                    <img class="card-img-top" src="app/public/Resources/img/<?= $row['image'] ?>" alt="">
                     <div class="card-body">
                         <h5 class="card-title">
                             <?php echo ($row['name']);
@@ -74,15 +76,35 @@ require 'app/public/Resources/partials/dashboardtop.php';
                             <a href="/delete?book_id=<?php echo $row['id'] ?>" class="card-link" style="color: red;">Delete</a>
                         <?php endif; ?>
                         <?php if ($_SESSION['user_type'] == 'Reader') :  ?>
+                            <?php $booksRead = App::get('databaseUser')->fetchBooks($uid);
+                            $booksRead->execute();
+                            $ch = $booksRead->fetchAll(PDO::FETCH_ASSOC);
+                            $check = null;
+                            $bid = $row['id'];
+                            foreach ($ch as $key) {
+                                if (in_array($bid, $key)) {
+                                    $check = 'checked';
+                                }
+                            }
+                            $link = "/readbook?bid=" . $bid;
+                            $lnk = "/unreadbook?bid=" . $bid;
+                            ?>
+
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="checkbox624">
-                                <label for="checkbox624" class="white-text form-check-label">Mark As Read</label>
+                                <?php if (!$check) : ?>
+                                    <input onclick='window.location.href = "<?= $link ?>"' class="form-check-input" <?php echo $check; ?> type="checkbox" id="<?php echo $row['id']; ?>">
+                                    <label for="<?php echo $row['id']; ?>" class="white-text form-check-label">Mark As Read</label>
+                                <?php else : ?>
+                                    <input onclick='window.location.href = "<?= $lnk ?>"' class="form-check-input" <?php echo $check; ?> type="checkbox" id="<?php echo $row['id']; ?>">
+                                    <label for="<?php echo $row['id']; ?>" class="white-text form-check-label">Mark As Read</label>
+                                <?php endif; ?>
                             </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach;
+        die(); ?>
     </div>
 </div>
 

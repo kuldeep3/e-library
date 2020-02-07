@@ -217,4 +217,24 @@ class Users extends QueryBuilder
         $this->values = array('id');
         return parent::select($this->table, $this->col_name, $this->values, $id);
     }
+    public function fetchBooks($id)
+    {
+        $this->col_name = array('book_id');
+        $this->values = array('user_id');
+        return parent::select('has_book', $this->col_name, $this->values, $id);
+    }
+    public function readBook($uid, $bid)
+    {
+        $this->col_name = array('user_id', 'book_id');
+        $user_id = "'" . $uid . "'";
+        $book_id = "'" . $bid . "'";
+        $this->values = array($user_id, $book_id);
+        $insert = parent::insert('has_book', $this->col_name, $this->values);
+        $insert->execute();
+    }
+    public function unreadBook($user_id, $book_id)
+    {
+        $delete = parent::delete('has_book', 'user_id', $user_id, 'book_id', $book_id);
+        $delete->execute();
+    }
 }

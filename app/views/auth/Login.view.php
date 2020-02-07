@@ -100,10 +100,10 @@
 
                     <div class="text-center p-t-12">
                         <span class="txt1">
-                            OR
+                           ---- OR connect with -----
                         </span>
                     </div>
-                    <div class="text-center p-t-12">
+                    <div class="text-center p-t-12 ">
                         <a href="<?=$gmail?>">
                             <img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" alt="" style="max-width: 50px;" />
                         </a>

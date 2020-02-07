@@ -60,7 +60,7 @@ foreach ($ch as $key) {
         <div class="container">
             <div class="wrap-login100" style="padding-top: 80px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-                    <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
+                    <img id="blah" src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
                 </div>
 
                 <form method="post" action="/editbook" class="login100-form" enctype="multipart/form-data" style="float: right;">
@@ -115,7 +115,7 @@ foreach ($ch as $key) {
                     ?>
 
                     <div class="wrap-input100">
-                        <input class="input100 my" type="file" name="image" value="<?php echo $book['image']; ?>" style="padding-top: 10px;" required>
+                        <input class="input100 my" type="file" name="image" value="<?php echo $book['image']; ?>" onchange="readURL(this);" style="padding-top: 10px;" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-file" aria-hidden="true"></i>
@@ -156,7 +156,20 @@ foreach ($ch as $key) {
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function(e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 <footer class="page-footer fixed-bottom" style="background: #58B747; ">
 

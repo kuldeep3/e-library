@@ -22,7 +22,11 @@ if ($_SESSION['user_type'] != 'Reader') {
 <!-- Page Content  -->
 <div id="content" class="p-4 p-md-5 pt-5">
     <h2 class="mb-4"><?= 'List of Books Read ' ?></h2>
-    <?php $books = App::get('databaseBook')->listBooks(); ?>
+    <?php
+    $uid = $_SESSION['id'];
+    $stmt = App::get('databaseUser')->fetchBooks($uid);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
 
     <div class="table-responsive">
         <table class="table" id="myTable">
@@ -36,13 +40,23 @@ if ($_SESSION['user_type'] != 'Reader') {
             <tbody>
                 <?php
                 $i = 1;
-                foreach ($books as $row) : ?>
-                    <tr>
-                        <th scope="row"><?php echo $i++; ?></th>
-                        <td><?php echo ($row['name']); ?></td>
-                        <td><?php echo ($row['author']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
+                foreach ($res as $key) :
+                    $books = App::get('databaseBook')->selectBook($key['book_id']);
+                    $books->execute();
+                    $readBook = $books->fetchAll(PDO::FETCH_ASSOC);
+
+                ?>
+                    <?php
+
+                    foreach ($readBook as $row) : ?>
+                        <tr>
+                            <th scope="row"><?php echo $i++; ?></th>
+                            <td><?php echo ($row['name']); ?></td>
+                            <td><?php echo ($row['author']); ?></td>
+                        </tr>
+                <?php endforeach;
+                endforeach;
+                ?>
             </tbody>
         </table>
     </div>
@@ -52,9 +66,10 @@ if ($_SESSION['user_type'] != 'Reader') {
 
 </div>
 <script>
-$(document).ready(function(){
-    $('#myTable').dataTable();
-});
+    $(document).ready(function() {
+        $('#myTable').dataTable();
+    });
 </script>
 </body>
+
 </html>
