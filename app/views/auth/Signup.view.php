@@ -1,3 +1,13 @@
+<?php session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    if ($_SESSION['user_type'] === 'Reader') {
+        header("location: /user");
+        exit;
+    } elseif ($_SESSION['user_type'] === 'Admin') {
+        header("location: /admin");
+    }
+} ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,7 +70,7 @@
     <!--===============================================================================================-->
   </head>
   <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#" style="cursor: default;">
       <img
         src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png"
         alt=""

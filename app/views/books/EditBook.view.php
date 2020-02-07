@@ -1,4 +1,10 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if ($_SESSION['user_type'] != 'Admin') {
+    header("location:/");
+}
 $cat = App::get('databaseCat')->listCategories();
 $bid = $_GET['bid'];
 $book = App::get('databaseBook')->selectBook($_GET['bid']);
@@ -40,7 +46,7 @@ foreach ($ch as $key) {
     <!--===============================================================================================-->
 </head>
 <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#" style="cursor: default;">
         <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
     </a>
 

@@ -1,4 +1,10 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if ($_SESSION['user_type'] != 'Admin') {
+    header("location:/");
+}
 $cat = App::get('databaseCat')->listCategories(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +35,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#" style="cursor: default;">
         <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
     </a>
 

@@ -13,7 +13,7 @@ class Mail
         $this->mail->Host = 'ssl://smtp.gmail.com';
         $this->mail->SMTPAuth = true;
         $this->mail->Username = 'warlord74300@gmail.com';
-        $this->mail->Password = 'qwerty1234ab.';
+        $this->mail->Password = 'kul.1212221';
         $this->mail->SMTPSecure = 'ssl';
         $this->mail->Port = 465;
     }
@@ -25,7 +25,7 @@ class Mail
         $this->mail->Subject = "Verification link";
         $this->mail->isHTML(true);
         $this->mail->SMTPDebug = 3;
-        $this->base_url = "http://localhost/activation?hash=${hash}&id={$lastID}";
+        $this->base_url = "http://ec2-3-6-47-234.ap-south-1.compute.amazonaws.com/activation?hash=${hash}&id={$lastID}";
         $this->mailContent = 'Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account.
             <br/> <br/> <a href ="'.$this->base_url.'">Click here to verify.</a>
         ' ;

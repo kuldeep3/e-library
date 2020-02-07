@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if ($_SESSION['user_type'] != 'Admin') {
-    header('location: /login');
+    header('location: /');
 }
 $stmt = App::get('databaseUser')->selectUser($_GET['id']);
 $stmt->execute();

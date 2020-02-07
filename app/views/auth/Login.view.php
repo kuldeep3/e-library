@@ -1,4 +1,14 @@
-<?php $gmail = Users::GoogleAuth();?>
+<?php $gmail = Users::GoogleAuth();
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    if ($_SESSION['user_type'] === 'Reader') {
+        header("location: /user");
+        exit;
+    } elseif ($_SESSION['user_type'] === 'Admin') {
+        header("location: /admin");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +38,7 @@
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#" style="cursor: default;">
         <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;" />
     </a>
 
@@ -100,11 +110,11 @@
 
                     <div class="text-center p-t-12">
                         <span class="txt1">
-                           ---- OR connect with -----
+                            ---- OR connect with -----
                         </span>
                     </div>
                     <div class="text-center p-t-12 ">
-                        <a href="<?=$gmail?>">
+                        <a href="<?= $gmail ?>">
                             <img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" alt="" style="max-width: 50px;" />
                         </a>
                     </div>
