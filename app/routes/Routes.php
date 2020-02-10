@@ -21,6 +21,8 @@ $router->define([
     'readbook' => 'app/controllers/books/ReadBook.controller.php',
     'unreadbook' => 'app/controllers/books/UnreadBook.controller.php',
     'verifymail' => 'app/views/users/Verify.view.php',
-    '404' => 'app/views/auth/Pagenotfound.view.php'
+    '404' => 'app/views/auth/Pagenotfound.view.php',
+    'categories' => 'app/views/books/Categories.view.php',
+    'deletecategories' => 'app/controllers/books/DeleteCategories.controller.php'
 ]);
 

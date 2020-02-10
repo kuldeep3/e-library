@@ -14,4 +14,8 @@ class BooksCategory extends QueryBuilder {
     public function listBooks($id){
         return parent::select('has_category','category_id',$this->values,$id);
     }
+    public function deleteCat($id) {
+        return parent::deleteAll($this->table,'id',$id);
+        
+    }
 }

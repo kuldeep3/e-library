@@ -94,10 +94,10 @@ require 'app/public/Resources/partials/dashboardtop.php';
                                             Are you sure you want to delete this?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-danger">
-                                                <a href="/delete?book_id=<?php echo $row['id'] ?>">Yes</a>
+                                            <button type="button" class="btn btn-danger">
+                                                <a href="/delete?book_id=<?php echo $row['id'] ?>" style="color: white;">Yes</a>
                                             </button>
-                                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">No</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
                                         </div>
                                     </div>
                                 </div>
