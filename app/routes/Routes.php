@@ -19,7 +19,8 @@ $router->define([
     'AddBook' => 'app/controllers/books/Addbook.controller.php',
     'editbook' => 'app/controllers/books/EditBook.controller.php',
     'readbook' => 'app/controllers/books/ReadBook.controller.php',
-    'unreadbook' => 'app/controllers/books/UnreadBook.controller.php'
+    'unreadbook' => 'app/controllers/books/UnreadBook.controller.php',
+    'verifymail' => 'app/views/users/Verify.view.php'
 ]);
 // $router->post('' , 'app/controllers/auth/Signup.controller.php');
 // $router->get('login', 'app/controllers/auth/Login.controller.php');

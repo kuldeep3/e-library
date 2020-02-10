@@ -58,7 +58,7 @@ class Users extends QueryBuilder
                 $lastID = $this->pdo->lastInsertId();
                 $mail = new Mail();
                 $mail->sendMail($lastID, $hash);
-                header('location:/');
+                header('location:/verifymail');
             }
         } else {
             echo "Email Id already exists. Please use different Email Id";

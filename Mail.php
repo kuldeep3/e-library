@@ -22,13 +22,19 @@ class Mail
     {
         $this->mail->setFrom('warlord74300@gmail.com', 'Arcenmities');
         $this->mail->addAddress($_POST['email']);
-        $this->mail->Subject = "Verification link";
+        $this->mail->Subject = "Verification link for E-Library";
         $this->mail->isHTML(true);
-        $this->mail->SMTPDebug = 3;
+        $this->mail->SMTPDebug = 0;
         $this->base_url = "http://ec2-3-6-47-234.ap-south-1.compute.amazonaws.com/activation?hash=${hash}&id={$lastID}";
-        $this->mailContent = 'Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get started using your account.
-            <br/> <br/> <a href ="'.$this->base_url.'">Click here to verify.</a>
-        ' ;
+        $this->mailContent = 
+            'Hi ' . $_POST['name'] . ', <br/> <br/> Thanks so much for joining E-library! To finish signing up, you just 
+        <br/> <br/>
+        need to confirm that we got your email right.
+            <br/> <br/>
+            <a class="btn btn-outline-success" href=" '. $this->base_url; '. "  role="button">Confirm Your Email</a>
+            <br/> <br/>
+            Button not working? Try pasting this link into your browser:
+            <br/>' . $this->base_url;' ';
         $this->mail->Body = $this->mailContent;
         if (!$this->mail->send()) {
             echo 'Message could not be sent';

@@ -31,49 +31,34 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css" />
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" /> -->
     <!--===============================================================================================-->
 </head>
+
+
+<body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
     <a class="navbar-brand" href="#" style="cursor: default;">
         <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;" />
     </a>
 
-    <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo03"> -->
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <!-- <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <a class="txt2 mr-sm-2" href="/signup" style="color: black; float:right;">
             New to e-Library
             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
         </a>
-        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background:grey;">Search</button> -->
     </div>
-    <!-- </div> -->
 </nav>
-
-<body>
-    <div class="limiter">
+    <div>
         <div class="container">
             <div class="wrap-login100" style="padding-top: 80px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
                     <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
                 </div>
 
-                <form method="post" action="/login" class="login100-form validate-form" style="float: right;">
+                <form method="post" action="/login" class="login100-form " >
                     <span class="login100-form-title" style="padding-bottom: 50px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>
