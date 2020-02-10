@@ -41,7 +41,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   <div class="form-inline my-2 my-lg-0">
     <a class="txt2 mr-sm-2" href="/" style="color: black; float:right;">
       Already have an Account
-      <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+      <i class="fas fa-long-arrow-alt-right m-l-5" aria-hidden="true"></i>
     </a>
   </div>
 </nav>
@@ -117,11 +117,24 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="app/public/Resources/css/footer.css">
+  <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
+    <div class="footer-middle">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
+              <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
+              <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
+              <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-2x fa-github"></i></a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
-<footer class="page-footer fixed-bottom" style="background: #58B747; ">
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:</div>
-  <!-- Copyright -->
-</footer>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </html>

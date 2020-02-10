@@ -5,9 +5,7 @@ $id = $_GET['id'];
 
 $results = App::get('databaseUser')->activate($id, $hash);
 if (isset($results)) {
-    echo "<script>window.setTimeout(function() {
-        alert('Account have been verified');
-    window.location='/';},0);</script>";
+   header('location:/');
 } else {
     echo "Please verify your account";
 }

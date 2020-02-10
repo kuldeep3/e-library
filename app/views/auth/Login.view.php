@@ -31,7 +31,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css" />
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <!--===============================================================================================-->
 </head>
 
@@ -47,7 +47,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <div class="form-inline my-2 my-lg-0">
         <a class="txt2 mr-sm-2" href="/signup" style="color: black; float:right;">
             New to e-Library
-            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+            <i class="fas fa-long-arrow-alt-right m-l-5" aria-hidden="true"></i>
         </a>
     </div>
 </nav>
@@ -130,11 +130,26 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
-</body>
-<footer class="page-footer fixed-bottom" style="background: #58B747; ">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:</div>
-    <!-- Copyright -->
+    <link rel="stylesheet" href="app/public/Resources/css/footer.css">
+    <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+    	<div class="col-md-12">
+            <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
+             <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
+             <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
+             <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
+             <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-2x fa-github"></i></a>
+            </ul>				
+		</div>
+    </div>
+  </div>
+  </div>
 </footer>
+
+</body>
+<!-- Footer -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </html>

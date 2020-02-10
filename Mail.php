@@ -31,7 +31,7 @@ class Mail
         <br/> <br/>
         need to confirm that we got your email right.
             <br/> <br/>
-            <a class="btn btn-outline-success" href=" '. $this->base_url; '. "  role="button">Confirm Your Email</a>
+            <a class="btn btn-outline-success" href=" '. $this->base_url . ' "  role="button">Confirm Your Email</a>
             <br/> <br/>
             Button not working? Try pasting this link into your browser:
             <br/>' . $this->base_url;' ';

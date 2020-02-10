@@ -34,6 +34,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">User Type</th>
+                    <th scope="col">Account Type</th>
                     <th scope="col">Created On</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -41,16 +42,48 @@ if ($_SESSION['user_type'] != 'Admin') {
             <tbody>
                 <?php
                 $i = 1;
+                $j = 0;
                 foreach ($users as $row) : ?>
                     <tr>
                         <th scope="row"><?php echo $i++; ?></th>
                         <td><?php echo ($row['name']); ?></td>
                         <td><?php echo ($row['email']); ?></td>
                         <td><?php echo ($row['user_type']); ?></td>
+                        <td><?php if ($row['activated'] == '1') {
+                                echo "Activated";
+                            } else {
+                                echo "Not Activated";
+                            }
+                            ?></td>
                         <td><?php echo ($row['created_at']); ?></td>
-                        <td><a href="/deleteuser?id=<?php echo $row['id']; ?>" class="card-link" style="color: red;">Delete</a></td>
+                        <td><a type="button" data-toggle="modal" data-target="#deleteModal<?= $j ?>" class="card-link" style="color: red;">Delete</a>
+                            <div class="modal fade" id="deleteModal<?= $j ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                <div class="modal-dialog " role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Delete Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <a href="/deleteuser?id=<?php echo $row['id']; ?>">Yes</a>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php
+                    $j++;
+                endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -59,9 +92,9 @@ if ($_SESSION['user_type'] != 'Admin') {
 
 </div>
 <script>
-$(document).ready(function(){
-    $('#myTable').dataTable();
-});
+    $(document).ready(function() {
+        $('#myTable').dataTable();
+    });
 </script>
 
 

@@ -1,28 +1,33 @@
 <?php
-// var_dump(App::get('databaseUser')->fetchBooks('56'));
-// die();
+
 require 'app/public/Resources/partials/dashboardtop.php';
 ?>
-
-<link rel="stylesheet" href="app/public/Resources/css/search.css">
-<script>
-    function myFunction() {
-        var input, filter, cards, cardContainer, h5, title, i;
-        input = document.getElementById("myFilter");
-        filter = input.value.toUpperCase();
-        cardContainer = document.getElementById("mybooks");
-        cards = cardContainer.getElementsByClassName("card");
-        for (i = 0; i < cards.length; i++) {
-            title = cards[i].querySelector(".card-body h5.card-title");
-            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
+<script src="app/public/Resources/js/jquery.min.js"></script>
+<script src="app/public/Resources/js/popper.js"></script>
+<script src="app/public/Resources/js/bootstrap.min.js"></script>
+<script src="app/public/Resources/js/main.js"></script>
+<?php if ($_SESSION['user_type'] == 'Reader') : ?>
+    <link rel="stylesheet" href="app/public/Resources/css/search.css">
+    <script>
+        function myFunction() {
+            var input, filter, cards, cardContainer, h5, title, i;
+            input = document.getElementById("myFilter");
+            filter = input.value.toUpperCase();
+            cardContainer = document.getElementById("mybooks");
+            cards = cardContainer.getElementsByClassName("card");
+            for (i = 0; i < cards.length; i++) {
+                title = cards[i].querySelector(".card-body h5.card-title");
+                if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
             }
         }
-    }
-</script>
+    </script>
+<?php endif; ?>
 <!-- Page Content  -->
+
 <div id="content" class="p-4 p-md-5 pt-5">
     <?php if ($_SESSION['user_type'] == 'Admin') : ?>
         <form action="" method="post">
@@ -42,6 +47,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
         $bookss = App::get('databaseBook')->listBookss();
         $uid = $_SESSION['id'];
         $i = -1;
+        $j = 0;
         foreach ($books as $row) :
             $i++;
         ?>
@@ -73,7 +79,30 @@ require 'app/public/Resources/partials/dashboardtop.php';
                         </p>
                         <?php if ($_SESSION['user_type'] == 'Admin') :  ?>
                             <a href="/edit?bid=<?php echo $row['id'] ?>" class="card-link" style="color: green;">Edit</a>
-                            <a href="/delete?book_id=<?php echo $row['id'] ?>" class="card-link" style="color: red;">Delete</a>
+                            <a type="button" data-toggle="modal" data-target="#deleteModal<?=$j?>" class="card-link" style="color: red;">Delete</a>
+                            <div class="modal fade" id="deleteModal<?=$j?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                <div class="modal-dialog " role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Delete Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <a href="/delete?book_id=<?php echo $row['id'] ?>">Yes</a>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <? $j++; ?>
                         <?php endif; ?>
                         <?php if ($_SESSION['user_type'] == 'Reader') :  ?>
                             <?php $booksRead = App::get('databaseUser')->fetchBooks($uid);
@@ -107,7 +136,7 @@ require 'app/public/Resources/partials/dashboardtop.php';
         die(); ?>
     </div>
 </div>
+</div>
+</body>
 
-<?php
-require 'app/public/Resources/partials/dashboardbottom.php';
-?>
+</html>
