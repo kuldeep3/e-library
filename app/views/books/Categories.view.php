@@ -20,9 +20,33 @@ if ($_SESSION['user_type'] != 'Admin') {
 
 <!-- Page Content  -->
 <div id="content" class="p-4 p-md-5 pt-5">
-    <form action="" method="post">
-        <button type="submit" class="btn btn-outline-primary" name="addbook" style="float: right;">Add Category</button>
-    </form>
+    <button type="button" data-toggle="modal" data-target="#addModal" class=" btn btn-outline-primary" name="addcategory" style="float: right;">Add Category</button>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+        <div class="modal-dialog " role="document">
+            <div class="modal-content" style="background-color: whitesmoke;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/addCat" method="post">
+                        <div class="form-group">
+                            <label for="category">Category Name</label>
+                            <span style="color:red">*</span>
+                            <input type="text" class="form-control" id="category" name="name" placeholder="" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" name="categoryAdded">Submit
+                    </button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <h2 class="mb-4"><?= 'Categories List '  ?></h2>
 
     <?php $categories = App::get('databaseCat')->listCategories();
@@ -37,7 +61,6 @@ if ($_SESSION['user_type'] != 'Admin') {
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Created On</th>
-                    <th scope="col">Action</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -67,30 +90,6 @@ if ($_SESSION['user_type'] != 'Admin') {
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger">
                                                 <a href="/deletecategories?id=<?php echo $row['id']; ?>" style="color: white;">Yes</a>
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td><a type="button" data-toggle="modal" data-target="#editModal<?= $j ?>" class="card-link" style="color: red;">Delete</a>
-                            <div class="modal fade" id="editModal<?= $j ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-
-                                <div class="modal-dialog " role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Delete Confirmation</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete this?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger">
-                                                <a href="/deleteuser?id=<?php echo $row['id']; ?>" style="color: white;">Yes</a>
                                             </button>
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
                                         </div>

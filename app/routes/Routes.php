@@ -23,6 +23,11 @@ $router->define([
     'verifymail' => 'app/views/users/Verify.view.php',
     '404' => 'app/views/auth/Pagenotfound.view.php',
     'categories' => 'app/views/books/Categories.view.php',
-    'deletecategories' => 'app/controllers/books/DeleteCategories.controller.php'
+    'deletecategories' => 'app/controllers/books/DeleteCategories.controller.php',
+    'addCat' => 'app/controllers/books/AddCategory.controller.php',
+    'forgot' => 'app/views/auth/ForgotPassword.view.php',
+    'message' => 'app/views/auth/ForgotPassMessage.view.php',
+    'forgotpass' => 'app/controllers/auth/ForgotPassword.controller.php',
+    'resetpass' => 'app/controllers/auth/ResetPassword.controller.php'
 ]);
 

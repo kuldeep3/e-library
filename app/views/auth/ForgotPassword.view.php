@@ -1,19 +1,18 @@
-<?php $gmail = Users::GoogleAuth();
-session_start();
+<?php session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    if ($_SESSION['user_type'] === 'Reader') {
-        header("location: /user");
-        exit;
-    } elseif ($_SESSION['user_type'] === 'Admin') {
-        header("location: /admin");
-    }
-}
-?>
+  if ($_SESSION['user_type'] === 'Reader') {
+    header("location: /user");
+    exit;
+  } elseif ($_SESSION['user_type'] === 'Admin') {
+    header("location: /admin");
+  }
+} ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Forgot Password</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--===============================================================================================-->
@@ -37,32 +36,28 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
-        <a class="navbar-brand" href="#" style="cursor: default;">
-            <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;" />
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
+    <a class="navbar-brand" href="#" style="cursor: default;">
+        <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;" />
+    </a>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+        <a class="txt2 mr-sm-2" href="/" style="color: black; float:right;">
+            Go to Login
+            <i class="fas fa-long-arrow-alt-right m-l-5" aria-hidden="true"></i>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            </ul>
-            <div class="form-inline my-2 my-lg-0">
-                <a class="txt2 mr-sm-2" href="/signup" style="color: black; float:right;">
-                    New to e-Library
-                    <i class="fas fa-long-arrow-alt-right m-l-5" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </nav>
+    </div>
+</nav>
     <div>
         <div class="container">
             <div class="wrap-login100" style="padding-top: 80px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-                    <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
+                    <img src="https://thingstoknow2015.files.wordpress.com/2015/06/cool-question-marks-question-mark-scratch-head1.jpg" alt="IMG" style="max-width: 200px; height:auto;" />
                 </div>
 
-                <form method="post" action="/login" class="login100-form ">
+                <form method="post" action="/forgotpass" class="login100-form " >
                     <span class="login100-form-title" style="padding-bottom: 50px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>
@@ -75,38 +70,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password" required />
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="text-right p-t-12">
-                        <span class="txt1">
-                            Forgot
-                        </span>
-                        <a class="txt2" href="/forgot">
-                            Email / Password?
-                        </a>
-                    </div>
-
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" name="login" type="submit">
-                            Login
+                        <button class="login100-form-btn" name="reset" type="submit">
+                            Get Password Reset Link
                         </button>
                     </div>
-
-                    <div class="text-center p-t-12">
-                        <span class="txt1">
-                            ---- OR connect with -----
-                        </span>
-                    </div>
-                    <div class="text-center p-t-12 ">
-                        <a href="<?= $gmail ?>">
-                            <img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" alt="" style="max-width: 50px;" />
-                        </a>
-                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -136,21 +105,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </script>
     <link rel="stylesheet" href="app/public/Resources/css/footer.css">
     <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
-        <div class="footer-middle">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
-                            <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
-                            <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
-                            <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
-                            <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-2x fa-github"></i></a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+    	<div class="col-md-12">
+            <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
+             <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
+             <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
+             <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
+             <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-2x fa-github"></i></a>
+            </ul>				
+		</div>
+    </div>
+  </div>
+  </div>
+</footer>
 
 </body>
 <!-- Footer -->

@@ -237,4 +237,10 @@ class Users extends QueryBuilder
         $delete = parent::delete('has_book', 'user_id', $user_id, 'book_id', $book_id);
         $delete->execute();
     }
+    public function forgotPassword($email)
+    {
+        $this->values = array('email');
+        $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
+        return $stmt;
+    }
 }
