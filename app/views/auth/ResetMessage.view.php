@@ -1,7 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     if ($_SESSION['user_type'] === 'Reader') {
         header("location: /user");
@@ -42,7 +40,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Welcome To</h1> <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" width="125" height="120" style="display: block; border: 0px;" />
+                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Password Reset Successful</h1> <img src="app/public/Resources/img/tick.jpg" width="100" height="120" style="display: block; border: 0px;" />
                         </td>
                     </tr>
                 </table>
@@ -53,12 +51,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">A verification link has been sent to your email account. Please click on that link to activate your account.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">If already activated, just press the button below: </p>
+                            <p style="margin: 0;">Your password was reset successfully. You can now log in with your new password.</p>
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +61,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#58B747"><a href="/" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #58B747; display: inline-block;">Login</a></td>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#58B747"><a href="/" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #58B747; display: inline-block;">Go to Login</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -86,4 +79,5 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         </tr>
     </table>
 </body>
+
 </html>

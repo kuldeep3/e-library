@@ -18,16 +18,16 @@ class PasswordMail
         $this->mail->Port = 465;
     }
 
-    public function sendMail($email,$hash)
+    public function sendMail($email,$hash,$name)
     {
         $this->mail->setFrom('warlord74300@gmail.com', 'E-Library Team');
         $this->mail->addAddress($email);
         $this->mail->Subject = "Password Reset for E-Library Account";
         $this->mail->isHTML(true);
         $this->mail->SMTPDebug = 0;
-        $this->base_url = "http://ec2-3-6-47-234.ap-south-1.compute.amazonaws.com/resetpass?email=${email}&hash=${hash}";
+        $this->base_url = "http://ec2-3-6-47-234.ap-south-1.compute.amazonaws.com/reset?email=${email}&hash=${hash}";
         $this->mailContent = 
-            'Hi ' . $_POST['name'] . ', <br/> <br/> We received a request to reset your password for your E-Library account: 
+            'Hi ' . $name . ', <br/> <br/> We received a request to reset your password for your E-Library account: 
         <br/> <br/> ' .
         $email . '. We are here to help!
             <br/> <br/>

@@ -243,4 +243,17 @@ class Users extends QueryBuilder
         $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
         return $stmt;
     }
+    public function resetPassword($hash, $email,$secured_password)
+    {
+        $this->values = array('hash');
+        $stmt = parent::select($this->table, $this->col_name, $this->values, $hash);
+        if ($stmt->execute()) {
+            $count = $stmt->rowcount();
+            var_dump($count);
+            if ($count == 1) {
+                $stmt = parent::update($this->table, ['password' => $secured_password], 'hash', $hash);
+                return $stmt->execute();
+            }
+        }
+    }
 }

@@ -28,6 +28,8 @@ $router->define([
     'forgot' => 'app/views/auth/ForgotPassword.view.php',
     'message' => 'app/views/auth/ForgotPassMessage.view.php',
     'forgotpass' => 'app/controllers/auth/ForgotPassword.controller.php',
-    'resetpass' => 'app/controllers/auth/ResetPassword.controller.php'
+    'resetpass' => 'app/controllers/auth/ResetPassword.controller.php',
+    'reset' => 'app/views/auth/ResetPassword.view.php',
+    'resetmsg' => 'app/views/auth/ResetMessage.view.php'
 ]);
 

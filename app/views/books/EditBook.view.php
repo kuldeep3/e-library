@@ -176,15 +176,26 @@ foreach ($ch as $key) {
             }
         }
     </script>
+<link rel="stylesheet" href="app/public/Resources/css/footer.css">
+    <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
+                            <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
+                            <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
+                            <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-2x fa-github"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
-<footer class="page-footer fixed-bottom" style="background: #58B747; ">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-
-    </div>
-    <!-- Copyright -->
-
-</footer>
+<!-- Footer -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </html>
