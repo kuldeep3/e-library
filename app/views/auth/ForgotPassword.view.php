@@ -52,12 +52,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 </nav>
     <div>
         <div class="container">
-            <div class="wrap-login100" style="padding-top: 80px;">
-                <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
+            <div class="wrap-login100" style="padding-top: 30px;">
+                <div class="login100-pic js-tilt" data-tilt style="padding-top: 80px;">
                     <img src="https://thingstoknow2015.files.wordpress.com/2015/06/cool-question-marks-question-mark-scratch-head1.jpg" alt="IMG" style="max-width: 200px; height:auto;" />
                 </div>
 
-                <form method="post" action="/forgotpass" class="login100-form " >
+                <form method="post" action="/forgotpass" class="login100-form" style="padding-top: 80px;" >
                     <span class="login100-form-title" style="padding-bottom: 50px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>
@@ -104,16 +104,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="app/public/Resources/css/footer.css">
-    <footer class="mainfooter" role="contentinfo" style="padding-bottom:50px;">
-  <div class="footer-middle">
+    <footer class="mainfooter fixed-bottom" role="contentinfo">
+  <div class="footer-middle" style="padding-top: 0;">
   <div class="container">
     <div class="row">
     	<div class="col-md-12">
-            <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
-             <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
-             <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
-             <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
-             <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-2x fa-github"></i></a>
+            <ul class="social-network social-circle" style="display:flex; justify-content:space-between; margin:1rem 0;">
+             <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-1x fa-facebook"></i></a>
+             <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-1x fa-linkedin"></i></a>
+             <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-1x fa-twitter"></i></a>
+             <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-1x fa-github"></i></a>
             </ul>				
 		</div>
     </div>
