@@ -31,6 +31,8 @@ $router->define([
     'resetpass' => 'app/controllers/auth/ResetPassword.controller.php',
     'reset' => 'app/views/auth/ResetPassword.view.php',
     'resetmsg' => 'app/views/auth/ResetMessage.view.php',
-    'activated' => 'app/views/auth/AccountActivatedMessage.view.php'
+    'activated' => 'app/views/auth/AccountActivatedMessage.view.php',
+    'bookaddedmsg' => 'app/views/books/AddedSuccessfullyMessage.view.php',
+    'editbookmsg' => 'app/views/books/EditBookMessage.view.php'
 ]);
 

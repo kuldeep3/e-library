@@ -70,7 +70,7 @@ if (isset($_POST['bookUpdated'])) {
             $book_id = App::get('databaseBook')->updateBook($booknames, $bookvalues, $bid);
             if ($book_id->execute()) {
                 $stmt = App::get('databaseBook')->addCategories($bid, $categories);
-                header('location:/books');
+                header('location:/editbookmsg');
             }
 
             echo "The file " . basename($_FILES["image"]["name"]) . " has been uploaded.";

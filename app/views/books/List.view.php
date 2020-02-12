@@ -29,8 +29,10 @@ session_start();
                 Add Book
                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
             </a>
-            <!-- <button type="submit" class="btn btn-outline-primary" name="addbook">Add Book</button> -->
-
+        <?php endif; ?>
+        <?php if ($_SESSION['user_type'] == 'Reader') : ?>
+            <link rel="stylesheet" href="app/public/Resources/css/placeholder.css">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="myFilter" onkeyup="myFunction()">
         <?php endif; ?>
     </div>
 </nav>
@@ -96,12 +98,31 @@ session_start();
                 </ul>
             </div>
         </nav>
-        <script src="app/public/Resources/js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script>
+            $('#back-to-top').fadeIn();
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+
+                $('#back-to-top').click(function() {
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 400);
+                    return false;
+                });
+            });
+        </script>
         <script src="app/public/Resources/js/popper.js"></script>
         <script src="app/public/Resources/js/bootstrap.min.js"></script>
         <script src="app/public/Resources/js/main.js"></script>
         <?php if ($_SESSION['user_type'] == 'Reader') : ?>
-            <link rel="stylesheet" href="app/public/Resources/css/search.css">
+
             <script>
                 function myFunction() {
                     var input, filter, cards, cardContainer, h5, title, i;
@@ -123,19 +144,14 @@ session_start();
         <!-- Page Content  -->
 
         <div id="content" class="p-4 p-md-5 pt-5">
-            <?php if ($_SESSION['user_type'] == 'Admin') : ?>
-                <!-- <form action="" method="post">
-                    <button type="submit" class="btn btn-outline-primary" name="addbook" style="float: right;">Add Book</button>
-                </form> -->
-            <?php endif; ?>
+
             <?php if ($_SESSION['user_type'] == 'Reader') : ?>
-                <div class="searchbar" style="float: right;">
+                <!-- <div class="searchbar" style="float: right;">
                     <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search by Book name..." id="myFilter">
                     <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-                </div>
+                </div> -->
             <?php endif; ?>
-            <!-- <h2 class="mb-4">Available Books</h2> -->
-
+            <h2 class="mb-4"></h2>
             <div class="card-deck" id="mybooks">
                 <?php $books = App::get('databaseBook')->listBooks();
                 $bookss = App::get('databaseBook')->listBookss();
@@ -231,6 +247,8 @@ session_start();
             </div>
         </div>
     </div>
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fa fa-chevron-up"></i></a>
 </body>
+
 
 </html>

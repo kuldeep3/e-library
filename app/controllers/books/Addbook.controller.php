@@ -54,7 +54,7 @@
 
                 if ($book_id = App::get('databaseBook')->addBook()) {
                     $stmt = App::get('databaseBook')->addCategories($book_id, $categories);
-                    header('location:/books');
+                    header('location:/bookaddedmsg');
                 }
 
                 echo "The file " . basename($_FILES["image"]["name"]) . " has been uploaded.";
