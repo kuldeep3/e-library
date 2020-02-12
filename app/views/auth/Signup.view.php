@@ -49,7 +49,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <body>
   <div class="limiter">
     <div class="container">
-      <div class="wrap-login100" style="padding-top: 80px;">
+      <div class="wrap-login100" style="padding-top: 60px;">
         <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
           <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
         </div>
@@ -118,12 +118,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="app/public/Resources/css/footer.css">
-  <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
-    <div class="footer-middle">
+  <footer class="mainfooter fixed-bottom" role="contentinfo">
+    <div class="footer-middle" style="padding-top: 0;">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
+            <ul class="social-network social-circle" style="display:flex; justify-content:space-between; margin:1rem 0;">
               <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
               <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
               <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>

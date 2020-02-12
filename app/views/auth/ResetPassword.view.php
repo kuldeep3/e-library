@@ -56,7 +56,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         <div class="container">
             <div class="wrap-login100" style="padding-top: 80px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-                    <img src="https://thingstoknow2015.files.wordpress.com/2015/06/cool-question-marks-question-mark-scratch-head1.jpg" alt="IMG" style="max-width: 200px; height:auto;" />
+                    <img src="https://020d13fa7c48c40440d5-a88a62c1a4dcaad00c12f3cc1645d040.ssl.cf5.rackcdn.com/images/mac-crm-small-business-platform-for-apple-business-market-gro-crm-account-management-system.png" alt="IMG"  />
                 </div>
 
                 <form method="post" action="/resetpass" class="login100-form ">
@@ -113,7 +113,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="app/public/Resources/css/footer.css">
-    <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
+    <footer class="mainfooter" role="contentinfo" style="padding-bottom:50px;">
         <div class="footer-middle">
             <div class="container">
                 <div class="row">

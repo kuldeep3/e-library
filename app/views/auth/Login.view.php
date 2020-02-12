@@ -17,7 +17,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="app/public/Resources/Login/images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/vendor/bootstrap/css/bootstrap.min.css" />
     <!--===============================================================================================-->
@@ -57,13 +57,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </nav>
     <div>
         <div class="container">
-            <div class="wrap-login100" style="padding-top: 80px;">
+            <div class="wrap-login100" style="padding-top: 30px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
                     <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
                 </div>
 
-                <form method="post" action="/login" class="login100-form ">
-                    <span class="login100-form-title" style="padding-bottom: 50px;">
+                <form method="post" action="/login" class="login100-form">
+                    <span class="login100-form-title" style="padding-bottom: 30px; margin-top:30px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>
                     </span>
@@ -87,7 +87,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                             Forgot
                         </span>
                         <a class="txt2" href="/forgot">
-                            Email / Password?
+                            Password?
                         </a>
                     </div>
 
@@ -135,12 +135,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="app/public/Resources/css/footer.css">
-    <footer class="mainfooter" role="contentinfo" style="margin-top: 0px; padding-bottom:50px;">
-        <div class="footer-middle">
+    <footer class="mainfooter fixed-bottom " role="contentinfo">
+        <div class="footer-middle" style="padding-top: 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <ul class="social-network social-circle" style="display:flex; justify-content:space-between;">
+                        <ul class="social-network social-circle" style="display:flex; justify-content:space-between; margin:1rem 0;">
                             <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-2x fa-facebook"></i></a>
                             <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-2x fa-linkedin"></i></a>
                             <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-2x fa-twitter"></i></a>
@@ -151,9 +151,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             </div>
         </div>
     </footer>
-
 </body>
-<!-- Footer -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </html>
