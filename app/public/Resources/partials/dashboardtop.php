@@ -16,9 +16,16 @@ session_start();
     <link rel="stylesheet" href="app/public/Resources/css/style1.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
-    <a class="navbar-brand" href="#" style="cursor: default;">
-        <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
-    </a>
+    <?php if ($_SESSION['user_type'] == 'Admin') : ?>
+        <a class="navbar-brand" href="admin" style="cursor: default;">
+            <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
+        </a>
+    <?php endif; ?>
+    <?php if ($_SESSION['user_type'] == 'Reader') : ?>
+        <a class="navbar-brand" href="user" style="cursor: default;">
+            <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
+        </a>
+    <?php endif; ?>
 
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     </ul>
@@ -56,6 +63,11 @@ session_start();
                         </li>
                         <li>
                             <a href="categories"><span class="fa fa-database mr-3" style="color: black;"></span> Categories</a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['user_type'] == 'Reader') : ?>
+                        <li>
+                            <a href="read"><span class="fa fa-check mr-3" style="color: black;"></span>Books Read</a>
                         </li>
                     <?php endif; ?>
                     <li>

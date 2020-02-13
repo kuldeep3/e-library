@@ -36,12 +36,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css" />
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css" />
+    <link rel="stylesheet" href="app/public/Resources/css/center.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <!--===============================================================================================-->
 </head>
 
 
-<body>
+<body style="position: relative;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
         <a class="navbar-brand" href="#" style="cursor: default;">
             <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;" />
@@ -53,10 +54,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         </div>
     </nav>
     <div>
-        <div class="container">
+        <div class="container child">
             <div class="wrap-login100" style="padding-top: 30px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 80px;">
-                    <img src="https://020d13fa7c48c40440d5-a88a62c1a4dcaad00c12f3cc1645d040.ssl.cf5.rackcdn.com/images/mac-crm-small-business-platform-for-apple-business-market-gro-crm-account-management-system.png" alt="IMG"  />
+                    <img src="https://020d13fa7c48c40440d5-a88a62c1a4dcaad00c12f3cc1645d040.ssl.cf5.rackcdn.com/images/mac-crm-small-business-platform-for-apple-business-market-gro-crm-account-management-system.png" alt="IMG" />
                 </div>
 
                 <form method="post" action="/resetpass" class="login100-form " style="padding-top: 80px;">
@@ -78,7 +79,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-
+                    <?php
+                    if (isset($_SESSION["err"])) { ?>
+                        <div class="alert alert-danger" role="alert" style="border-radius: 30px;">
+                            <? $err = $_SESSION["err"];
+                            echo $err;
+                            unset($_SESSION["err"]); ?>
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        </div>
+                    <?php }
+                    ?>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" name="change" type="submit">
                             Change Password

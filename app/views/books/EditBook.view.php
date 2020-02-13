@@ -42,6 +42,8 @@ foreach ($ch as $key) {
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css">
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css">
+    <link rel="stylesheet" href="app/public/Resources/css/center.css">
+    <link rel="stylesheet" href="app/public/Resources/css/upload.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--===============================================================================================-->
 </head>
@@ -60,10 +62,10 @@ foreach ($ch as $key) {
 
 </nav>
 
-<body>
+<body style="position: relative;">
 
     <div class="limiter">
-        <div class="container">
+        <div class="container child">
             <div class="wrap-login100" style="padding-top: 60px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
                     <img id="blah" src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
@@ -120,7 +122,8 @@ foreach ($ch as $key) {
 
                     ?>
 
-                    <div class="wrap-input100">
+                    <div class="upload-btn-wrapper">
+                        <button class="up">Upload a file</button>
                         <input class="input100 my" type="file" name="image" value="<?php echo $book['image']; ?>" onchange="readURL(this);" style="padding-top: 10px;" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -176,7 +179,7 @@ foreach ($ch as $key) {
             }
         }
     </script>
-<link rel="stylesheet" href="app/public/Resources/css/footer.css">
+    <link rel="stylesheet" href="app/public/Resources/css/footer.css">
     <footer class="mainfooter fixed-bottom" role="contentinfo">
         <div class="footer-middle" style="padding-top: 0;">
             <div class="container">

@@ -31,12 +31,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css" />
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css" />
+    <link rel="stylesheet" href="app/public/Resources/css/center.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <!--===============================================================================================-->
 </head>
 
 
-<body>
+<body style="position: relative;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
         <a class="navbar-brand" href="#" style="cursor: default;">
             <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;" />
@@ -50,7 +51,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             </a>
         </div>
     </nav>
-    <div class="container">
+    <div class="container child">
         <div class="wrap-login100" style="padding-top: 30px;">
             <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
                 <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
@@ -62,14 +63,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                     <p class="text-center">Educate – Captivate – Connect</p>
                 </span>
                 <div class="wrap-input100">
-                    <input class="input100" type="text" name="email" placeholder="Email" />
+                    <input class="input100" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email" required />
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                     </span>
                 </div>
                 <div class="wrap-input100">
-                    <input class="input100" type="password" name="password" placeholder="Password" />
+                    <input class="input100" type="password" name="password" placeholder="Password" required />
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-lock" aria-hidden="true"></i>
@@ -137,23 +138,24 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="app/public/Resources/css/footer.css">
-    <footer class="mainfooter fixed-bottom " role="contentinfo">
-        <div class="footer-middle" style="padding-top: 0;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="social-network social-circle" style="display:flex; justify-content:space-between; margin:1rem 0;">
-                            <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-1x fa-facebook"></i></a>
-                            <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-1x fa-linkedin"></i></a>
-                            <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-1x fa-twitter"></i></a>
-                            <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-1x fa-github"></i></a>
-                        </ul>
-                    </div>
+
+</body>
+<footer class="mainfooter fixed-bottom " role="contentinfo">
+    <div class="footer-middle" style="padding-top: 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="social-network social-circle" style="display:flex; justify-content:space-between; margin:1rem 0;">
+                        <a href="https://www.facebook.com/warlord74300" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-1x fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/kuldeep-upreti-3629ab145/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-1x fa-linkedin"></i></a>
+                        <a href="https://twitter.com/warlord743" target="_blank" class="icoTwitter" title="Twitter"><i class="fab fa-1x fa-twitter"></i></a>
+                        <a href="https://github.com/kuldeep3" target="_blank" class="icoGithub" title="Github"><i class="fab fa-1x fa-github"></i></a>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
-</body>
+    </div>
+</footer>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 </html>

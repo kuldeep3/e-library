@@ -5,12 +5,17 @@ $email = $_SESSION["email"];
 if (isset($_POST['change'])) {
     $password = $_POST['password'];
     $verify_password = $_POST['verify_password'];
-
-    if ($password != $verify_password) {
-        echo "Password do not match";
-    } else {
+    if (!empty($password) && !empty($verify_password)) {
         $secured_password = password_hash($password, PASSWORD_BCRYPT);
         App::get('databaseUser')->resetPassword($hash, $email, $secured_password);
         header('location:/resetmsg');
+    }
+    if (empty($password)) {
+        $error = "Please enter password";
+        $_SESSION["err"] = $error;
+        header('location:/reset');
+    }
+    if ($password != $verify_password) {
+    } else {
     }
 }

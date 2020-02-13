@@ -28,6 +28,8 @@ $cat = App::get('databaseCat')->listCategories(); ?>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css">
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css">
+    <link rel="stylesheet" href="app/public/Resources/css/center.css">
+    <link rel="stylesheet" href="app/public/Resources/css/upload.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--===============================================================================================-->
 </head>
@@ -64,10 +66,10 @@ $cat = App::get('databaseCat')->listCategories(); ?>
     <!-- </div> -->
 </nav>
 
-<body>
+<body style="position: relative;">
 
     <div class="limiter">
-        <div class="container">
+        <div class="container child">
             <div class="wrap-login100" style="padding-top: 80px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
                     <img id="blah" src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
@@ -107,6 +109,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                             </span>
                         </div>
                     </div>
+
                     <?php $i = 1;
                     foreach ($cat as $row) : ?>
                         <label for=" <?php $row['id'] ?>">
@@ -119,8 +122,9 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                     <?php
                     endforeach;
                     ?>
-                    <div class="wrap-input100">
-                        <input class="input100 my" type="file" name="image" style="padding-top: 10px;" onchange="readURL(this);" required>
+                    <div class="upload-btn-wrapper">
+                        <button class="up">Upload a file</button>
+                        <input type="file" name="image" style="padding-top: 10px;" onchange="readURL(this);" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-file" aria-hidden="true"></i>

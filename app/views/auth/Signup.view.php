@@ -30,6 +30,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/util.css" />
   <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/css/main.css" />
+  <link rel="stylesheet" href="app/public/Resources/css/center.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <!--===============================================================================================-->
 </head>
@@ -46,9 +47,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </div>
 </nav>
 
-<body>
+<body style="position: relative;">
   <div class="limiter">
-    <div class="container">
+    <div class="container child">
       <div class="wrap-login100" style="padding-top: 60px;">
         <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
           <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />

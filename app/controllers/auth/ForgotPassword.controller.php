@@ -11,6 +11,9 @@ if (isset($_POST['reset'])) {
         $mail->sendMail($email,$hash,$name);
         header('location:/message');
     } else {
-        echo "No account found with this email";
+        session_start();
+        $email_err = "Account not found";
+        $_SESSION["err"] = $email_err;
+        header('location:/forgot');
     }
 }

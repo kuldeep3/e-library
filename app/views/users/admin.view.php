@@ -7,7 +7,7 @@ if ($_SESSION['user_type'] != 'Admin') {
 }
 ?>
 <!-- Page Content  -->
-<div id="content" class="p-4 p-md-5 pt-5">
+<div id="content" class="p-4 p-md-5 pt-5" style="position: relative;">
   
   <?php $users = App::get('databaseUser')->listUsers();
   $books = App::get('databaseBook')->listBooks();
