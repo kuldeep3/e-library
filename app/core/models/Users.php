@@ -19,15 +19,6 @@ class Users extends QueryBuilder
         return parent::list($this->table, $this->col_name);
     }
 
-    // public function insertUsers()
-    // {
-    //     $name = trim($_POST['name']);
-    //     $email = trim($_POST['email']);
-    //     $password = $_POST['password'];
-    //     $secured_pass = password_hash($password, PASSWORD_BCRYPT);
-    //     parent::insert($this->table, $this->col_name);
-
-    // }
     public function insertUsers($name, $email, $password)
     {
         // $name = trim($_POST['name']);
@@ -45,7 +36,10 @@ class Users extends QueryBuilder
         $select->execute();
         if ($select->rowcount() == 0) {
             if ($password != $verify_password) {
-                echo 'Password do not match';
+                session_start();
+                $pass_err = "Password do not match";
+                $_SESSION["err"] = $pass_err;
+                header('location:/signup');
             } else {
                 $hash = md5(rand(0, 1000));
                 $credentials[4] = "'" . $hash . "'";
@@ -61,62 +55,87 @@ class Users extends QueryBuilder
                 header('location:/verifymail');
             }
         } else {
-            echo "Email Id already exists. Please use different Email Id";
+            session_start();
+            $error = "Email Id already exists";
+            $_SESSION["err"] = $error; 
+            header('location:/signup');
         }
     }
 
 
     public function verifyUser($email)
     {
-        $email_err = $password_err = "";
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            if (empty(trim($_POST["email"]))) {
-                $email_err = "Please enter email";
-            } else {
-                $email = trim($_POST["email"]);
-            }
-            if (empty(trim($_POST["password"]))) {
-                $password_err = "Please enter your password";
-            } else {
-                $password = $_POST["password"];
-            }
-            if (empty($email_err) && empty($password_err)) {
-                array_pop($this->values);
-                $select = parent::select($this->table, $this->col_name, $this->values, $email);
-                if ($select->execute()) {
-                    if ($select->rowcount() == 1) {
-                        if ($row = $select->fetch()) {
-                            $id = $row['id'];
-                            $name = $row['name'];
-                            $email = $row['email'];
-                            $hashed_password = $row['password'];
-                            $user_type = $row['user_type'];
-                            if (password_verify($password, $hashed_password)) {
-                                if ($row['activated']) {
-                                    session_start();
-                                    $_SESSION["loggedin"] = true;
-                                    $_SESSION['id'] = $id;
-                                    $_SESSION["name"] = $name;
-                                    $_SESSION["email"] = $email;
-                                    $_SESSION["user_type"] = $user_type;
-                                    if ($_SESSION['user_type'] === 'Reader') {
-                                        header("location:/user");
-                                    } else {
-                                        header("location:/admin");
-                                    }
+        $email_err = $password_err = $err_message = "";
+        if (empty(trim($_POST["email"]))) {
+            session_start();
+            $email_err = "Please enter email";
+            $_SESSION["err"] = $email_err;
+            header('location:/');
+        } else {
+            $email = trim($_POST["email"]);
+        }
+        if (empty(trim($_POST["password"]))) {
+            session_start();
+            $password_err = "Please enter your password";
+            $_SESSION["err"] = $password_err;
+            header('location:/');
+        } else {
+            $password = $_POST["password"];
+        }
+        if (empty($_POST["email"]) && empty($_POST["password"])) {
+            session_start();
+            $error = "Please fill up the form";
+            $_SESSION["err"] = $error;
+            header('location:/');
+        }
+        if (empty($email_err) && empty($password_err)) {
+            array_pop($this->values);
+            $select = parent::select($this->table, $this->col_name, $this->values, $email);
+            if ($select->execute()) {
+                if ($select->rowcount() == 1) {
+                    if ($row = $select->fetch()) {
+                        $id = $row['id'];
+                        $name = $row['name'];
+                        $email = $row['email'];
+                        $hashed_password = $row['password'];
+                        $user_type = $row['user_type'];
+                        if (password_verify($password, $hashed_password)) {
+                            if ($row['activated']) {
+                                session_start();
+                                $_SESSION["loggedin"] = true;
+                                $_SESSION['id'] = $id;
+                                $_SESSION["name"] = $name;
+                                $_SESSION["email"] = $email;
+                                $_SESSION["user_type"] = $user_type;
+                                if ($_SESSION['user_type'] === 'Reader') {
+                                    header("location:/user");
                                 } else {
-                                    echo "Account not activated";
+                                    header("location:/admin");
                                 }
                             } else {
-                                echo "The password you entered was not valid";
+                                session_start();
+                                $err_message = "Account not activated";
+                                $_SESSION["err"] = $err_message;
+                                header('location:/');
                             }
+                        } else {
+                            session_start();
+                            $err_message = "The password you entered was not valid";
+                            $_SESSION["err"] = $err_message;
+                            header('location:/');
                         }
-                    } else {
-                        echo "No account found with that email";
                     }
                 } else {
-                    echo "oops! something went wrong";
+                    session_start();
+                    $err_message = "No account found with that email";
+                    $_SESSION["err"] = $err_message;
+                    header('location:/');
                 }
+            } else {
+                session_start();
+                $err_message = "Oops! something went wrong";
+                $_SESSION["err"] = $err_message;
+                header('location:/');
             }
         }
     }
@@ -243,7 +262,7 @@ class Users extends QueryBuilder
         $stmt = parent::select($this->table, $this->col_name, $this->values, $email);
         return $stmt;
     }
-    public function resetPassword($hash, $email,$secured_password)
+    public function resetPassword($hash, $email, $secured_password)
     {
         $this->values = array('hash');
         $stmt = parent::select($this->table, $this->col_name, $this->values, $hash);

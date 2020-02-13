@@ -87,6 +87,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
               <i class="fa fa-lock" aria-hidden="true"></i>
             </span>
           </div>
+          <?php
+          if (isset($_SESSION["err"])) { ?>
+            <div class="alert alert-danger" role="alert" style="border-radius: 30px;">
+              <? $err = $_SESSION["err"];
+              echo $err;
+              unset($_SESSION["err"]); ?>
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+          <?php }
+          ?>
 
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" name="register">

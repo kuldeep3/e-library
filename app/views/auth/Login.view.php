@@ -62,20 +62,29 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                     <p class="text-center">Educate – Captivate – Connect</p>
                 </span>
                 <div class="wrap-input100">
-                    <input class="input100" type="text" name="email" placeholder="Email" required />
+                    <input class="input100" type="text" name="email" placeholder="Email" />
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                     </span>
                 </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="password" placeholder="Password" required />
+                <div class="wrap-input100">
+                    <input class="input100" type="password" name="password" placeholder="Password" />
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
                 </div>
+                <?php
+                if (isset($_SESSION["err"])) { ?>
+                    <div class="alert alert-danger" role="alert" style="border-radius: 30px;">
+                        <? $err = $_SESSION["err"];
+                        echo $err;
+                        unset($_SESSION["err"]); ?>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                <?php }
+                ?>
                 <div class="text-right p-t-12">
                     <span class="txt1">
                         Forgot
