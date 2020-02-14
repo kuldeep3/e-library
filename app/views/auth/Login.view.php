@@ -54,7 +54,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <div class="container child">
         <div class="wrap-login100" style="padding-top: 30px;">
             <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-                <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
+            <h2>Complete Digital Library Platform for Personalized Learning</h2>
+                <!-- <img src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" /> -->
             </div>
 
             <form method="post" action="/login" class="login100-form">

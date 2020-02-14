@@ -1,8 +1,20 @@
 <?php session_start();
+$time = $_GET['time'];
+$curr_time = time();
+$res = $curr_time - $time;
+if ($res > 81600) {
+    header('location:/timeout');
+}
+
 $hash = $_GET['hash'];
 $email = $_GET['email'];
+$uri = $_GET['uri'];
+var_dump($uri);
+die();
+$_SESSION["uri"] = $uri;
 $_SESSION["hash"] = $hash;
 $_SESSION["email"] = $email;
+
 // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 //     if ($_SESSION['user_type'] === 'Reader') {
 //         header("location: /user");
@@ -55,12 +67,12 @@ $_SESSION["email"] = $email;
     </nav>
     <div>
         <div class="container child">
-            <div class="wrap-login100" style="padding-top: 30px;">
-                <div class="login100-pic js-tilt" data-tilt style="padding-top: 80px;">
+            <div class="wrap-login100" style="padding-top: 0px;">
+                <div class="login100-pic js-tilt" data-tilt style="padding-top: 30px;">
                     <img src="https://020d13fa7c48c40440d5-a88a62c1a4dcaad00c12f3cc1645d040.ssl.cf5.rackcdn.com/images/mac-crm-small-business-platform-for-apple-business-market-gro-crm-account-management-system.png" alt="IMG" />
                 </div>
 
-                <form method="post" action="/resetpass" class="login100-form " style="padding-top: 80px;">
+                <form method="post" action="/resetpass" class="login100-form " style="padding-top: 0px;">
                     <span class="login100-form-title" style="padding-bottom: 50px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>

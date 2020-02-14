@@ -8,7 +8,8 @@ if (isset($_POST['reset'])) {
     $hash = $res['hash'];
     if ($user->rowcount() == 1) {
         $mail = new PasswordMail();
-        $mail->sendMail($email,$hash,$name);
+        $current_time = time();
+        $mail->sendMail($email,$hash,$name,$current_time);
         header('location:/message');
     } else {
         session_start();

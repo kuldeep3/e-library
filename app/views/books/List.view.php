@@ -15,6 +15,13 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="app/public/Resources/css/style1.css">
+    <noscript>
+        <style>
+            #myfilter {
+                display: none;
+            }
+        </style>
+    </noscript>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
     <?php if ($_SESSION['user_type'] == 'Admin') : ?>
@@ -39,6 +46,7 @@ session_start();
             </a>
         <?php endif; ?>
         <?php if ($_SESSION['user_type'] == 'Reader') : ?>
+
             <link rel="stylesheet" href="app/public/Resources/css/placeholder.css">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="myFilter" onkeyup="myFunction()">
         <?php endif; ?>

@@ -34,6 +34,7 @@ $router->define([
     'activated' => 'app/views/auth/AccountActivatedMessage.view.php',
     'bookaddedmsg' => 'app/views/books/AddedSuccessfullyMessage.view.php',
     'editbookmsg' => 'app/views/books/EditBookMessage.view.php',
-    'read' => 'app/views/books/BooksRead.view.php'
+    'read' => 'app/views/books/BooksRead.view.php',
+    'timeout' => 'app/views/auth/Timeout.view.php'
 ]);
 

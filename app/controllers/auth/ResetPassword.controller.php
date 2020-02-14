@@ -5,6 +5,12 @@ $email = $_SESSION["email"];
 if (isset($_POST['change'])) {
     $password = $_POST['password'];
     $verify_password = $_POST['verify_password'];
+    $pass_err = $verify_pass_err = "";
+    if (empty($password)) {
+        $pass_err = "Please enter password";
+        $_SESSION["err"] = $pass_err;
+        header('location:/reset');
+    }
     if (empty($password)) {
         $error = "Please enter password";
         $_SESSION["err"] = $error;
