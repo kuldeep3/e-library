@@ -20,19 +20,23 @@ if ($_SESSION['user_type'] != 'Reader') {
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="card-counter success">
-                    <i class="fa fa-book"></i>
-                    <span class="count-numbers"><?php echo count($books); ?></span>
-                    <span class="count-name">Available Books</span>
-                </div>
+                <a href="/books">
+                    <div class="card-counter success">
+                        <i class="fa fa-book"></i>
+                        <span class="count-numbers"><?php echo count($books); ?></span>
+                        <span class="count-name">Available Books</span>
+                    </div>
+                </a>
             </div>
 
             <div class="col-md-6">
-                <div class="card-counter info">
-                    <i class="fa fa-book"></i>
-                    <span class="count-numbers"><?php echo count($res); ?></span>
-                    <span class="count-name">Books Read</span>
-                </div>
+                <a href="/read">
+                    <div class="card-counter info">
+                        <i class="fa fa-book"></i>
+                        <span class="count-numbers"><?php echo count($res); ?></span>
+                        <span class="count-name">Books Read</span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

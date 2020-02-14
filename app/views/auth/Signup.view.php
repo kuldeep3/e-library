@@ -90,12 +90,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
           </div>
           <?php
           if (isset($_SESSION["err"])) { ?>
-            <div class="alert alert-danger" role="alert" style="border-radius: 30px;">
+            <p style="color:red; margin-bottom:0px;">
               <? $err = $_SESSION["err"];
               echo $err;
               unset($_SESSION["err"]); ?>
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
+            </p>
           <?php }
           ?>
 

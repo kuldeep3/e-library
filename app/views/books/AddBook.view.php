@@ -124,7 +124,7 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                     ?>
                     <div class="upload-btn-wrapper">
                         <button class="up">Upload a file</button>
-                        <input type="file" name="image" style="padding-top: 10px;" onchange="readURL(this);" required>
+                        <input type="file" name="image" style="padding-top: 10px;" onchange="readURL(this);" accept="image/*" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-file" aria-hidden="true"></i>

@@ -7,8 +7,8 @@ if ($_SESSION['user_type'] != 'Admin') {
 }
 ?>
 <!-- Page Content  -->
-<div id="content" class="p-4 p-md-5 pt-5" style="position: relative;">
-  
+<div id="content" class="p-4 p-md-5 pt-5">
+
   <?php $users = App::get('databaseUser')->listUsers();
   $books = App::get('databaseBook')->listBooks();
   ?>
@@ -16,19 +16,23 @@ if ($_SESSION['user_type'] != 'Admin') {
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div class="card-counter success">
-          <i class="fa fa-book"></i>
-          <span class="count-numbers"><?php echo count($books); ?></span>
-          <span class="count-name">Available Books</span>
-        </div>
+        <a href="/books">
+          <div class="card-counter success">
+            <i class="fa fa-book"></i>
+            <span class="count-numbers"><?php echo count($books); ?></span>
+            <span class="count-name">Available Books</span>
+          </div>
+        </a>
       </div>
 
       <div class="col-md-6">
-        <div class="card-counter info">
-          <i class="fa fa-users"></i>
-          <span class="count-numbers"><?php echo count($users); ?></span>
-          <span class="count-name">Total Users</span>
-        </div>
+        <a href="/listuser">
+          <div class="card-counter info">
+            <i class="fa fa-users"></i>
+            <span class="count-numbers"><?php echo count($users); ?></span>
+            <span class="count-name">Total Users</span>
+          </div>
+        </a>
       </div>
     </div>
   </div>

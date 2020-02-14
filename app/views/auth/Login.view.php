@@ -16,8 +16,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <title>Login</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="app/public/Resources/Login/images/icons/favicon.ico" />
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="app/public/Resources/Login/vendor/bootstrap/css/bootstrap.min.css" />
     <!--===============================================================================================-->
@@ -78,20 +78,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 </div>
                 <?php
                 if (isset($_SESSION["err"])) { ?>
-                    <div class="alert alert-danger" role="alert" style="border-radius: 30px;">
+                    <p style="color:red; margin-bottom:0px;">
                         <? $err = $_SESSION["err"];
                         echo $err;
                         unset($_SESSION["err"]); ?>
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    </div>
+                    </p>
                 <?php }
                 ?>
                 <div class="text-right p-t-12">
-                    <span class="txt1">
-                        Forgot
-                    </span>
                     <a class="txt2" href="/forgot">
-                        Password?
+                        Forgot Password?
                     </a>
                 </div>
 

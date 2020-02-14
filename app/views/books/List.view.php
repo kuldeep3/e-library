@@ -19,15 +19,15 @@ session_start();
 <nav class="navbar navbar-expand-lg navbar-light" style="background: #58B747">
     <?php if ($_SESSION['user_type'] == 'Admin') : ?>
         <a class="navbar-brand" href="admin" style="cursor: default;">
-        <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
-    </a>
+            <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
+        </a>
     <?php endif; ?>
     <?php if ($_SESSION['user_type'] == 'Reader') : ?>
         <a class="navbar-brand" href="user" style="cursor: default;">
-        <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
-    </a>
+            <img src="https://www.boxfordlibrary.org/wordpress/wp-content/uploads/2014/03/elibrary-logo.png" alt="" style="max-width: 80px; max-height:100px;">
+        </a>
     <?php endif; ?>
-    
+
 
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     </ul>
@@ -143,12 +143,15 @@ session_start();
                     filter = input.value.toUpperCase();
                     cardContainer = document.getElementById("mybooks");
                     cards = cardContainer.getElementsByClassName("card");
+                    group = cardContainer.getElementsByClassName("card-group");
                     for (i = 0; i < cards.length; i++) {
                         title = cards[i].querySelector(".card-body h5.card-title");
                         if (title.innerText.toUpperCase().indexOf(filter) > -1) {
                             cards[i].style.display = "";
+                            group[i].style.display = "";
                         } else {
                             cards[i].style.display = "none";
+                            group[i].style.display = "none";
                         }
                     }
                 }
@@ -166,6 +169,7 @@ session_start();
             <?php endif; ?>
             <h2 class="mb-4"></h2>
             <div class="card-deck" id="mybooks">
+
                 <?php $books = App::get('databaseBook')->listBooks();
                 $bookss = App::get('databaseBook')->listBookss();
                 $uid = $_SESSION['id'];
@@ -174,8 +178,8 @@ session_start();
                 foreach ($books as $row) :
                     $i++;
                 ?>
-                    <div class="card-column">
-                        <br>
+                    <div class="card-group" style="padding: 10px 0;">
+                        <br> <br>
                         <div class="card" style="width: 12rem;">
                             <img class="card-img-top" src="app/public/Resources/img/<?= $row['image'] ?>" alt="">
                             <div class="card-body">
@@ -256,7 +260,8 @@ session_start();
                         </div>
                     </div>
                 <?php endforeach;
-                die(); ?>
+                ?>
+
             </div>
         </div>
     </div>
