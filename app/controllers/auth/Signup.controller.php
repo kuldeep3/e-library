@@ -12,13 +12,6 @@ if (isset($_POST['register'])) {
         $email_err = "Please enter your email";
         $_SESSION["err"] = $email_err;
         header('location:/signup');
-    } elseif ($email) {
-       !preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email);
-       session_start();
-       $email_error = "Please enter valid email";
-       $_SESSION["err"] = $email_error;
-       header('location:/signup');  
-       
     } elseif (empty($_POST['password'])) {
         session_start();
         $pass_err = "Please enter your password";
@@ -35,7 +28,15 @@ if (isset($_POST['register'])) {
         $_SESSION["err"] = $error;
         header('location:/signup');
     } else {
-        App::get('databaseUser')->insertUsers($_POST['name'], $_POST['email'], $_POST['password']);
+        $valid_email  = preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email);
+        if ($valid_email != 1) {
+            session_start();
+            $email_error = "Please enter valid email";
+            $_SESSION["err"] = $email_error;
+            header('location:/signup');
+        } else {
+            App::get('databaseUser')->insertUsers($_POST['name'], $_POST['email'], $_POST['password']);
+        }
     }
 } else {
     return 'please try again later';
