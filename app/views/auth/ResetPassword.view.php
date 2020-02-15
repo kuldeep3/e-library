@@ -1,19 +1,23 @@
 <?php session_start();
-$time = $_GET['time'];
-$curr_time = time();
-$res = $curr_time - $time;
-if ($res > 81600) {
-    header('location:/timeout');
+if (isset($_GET['time'])) {
+    $time = $_GET['time'];
+    $curr_time = time();
+    $res = $curr_time - $time;
+    var_dump($res);
+    if ($res > 81600) {
+         header('location:/timeout');
+    }
+
+    $hash = $_GET['hash'];
+    $email = $_GET['email'];
+
+    $_SESSION["hash"] = $hash;
+    $_SESSION["email"] = $email;
+} else {
+    $hash = $_SESSION["hash"];
+    $email = $_SESSION["email"];
 }
 
-$hash = $_GET['hash'];
-$email = $_GET['email'];
-$uri = $_GET['uri'];
-var_dump($uri);
-die();
-$_SESSION["uri"] = $uri;
-$_SESSION["hash"] = $hash;
-$_SESSION["email"] = $email;
 
 // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 //     if ($_SESSION['user_type'] === 'Reader') {
@@ -78,14 +82,14 @@ $_SESSION["email"] = $email;
                         <p class="text-center">Educate – Captivate – Connect</p>
                     </span>
                     <div class="wrap-input100">
-                        <input class="input100" type="password" name="password" placeholder="Password" required />
+                        <input class="input100" type="password" name="password" placeholder="Password" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="wrap-input100">
-                        <input class="input100" type="password" name="verify_password" placeholder="Verify Password" required />
+                        <input class="input100" type="password" name="verify_password" placeholder="Verify Password" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>

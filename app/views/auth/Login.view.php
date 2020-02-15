@@ -53,9 +53,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </nav>
     <div class="container child">
         <div class="wrap-login100" style="padding-top: 30px; text-align:center;">
-            <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-
-
+            <div class="login100-pic js-tilt" data-tilt style="padding-top: 40px;">
                 <img class = "px-auto" src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;" />
                 <h6 style="padding-top: 5px;">Complete Digital Library Platform for Personalized Learning</h6>
             </div>

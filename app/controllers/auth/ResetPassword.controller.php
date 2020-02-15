@@ -23,7 +23,7 @@ if (isset($_POST['change'])) {
     } else {
         if (!empty($password) && !empty($verify_password)) {
             $secured_password = password_hash($password, PASSWORD_BCRYPT);
-            App::get('databaseUser')->resetPassword($hash, $email, $secured_password);
+            var_dump(App::get('databaseUser')->resetPassword($hash, $email, $secured_password));
             header('location:/resetmsg');
         }
     }

@@ -54,12 +54,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <div>
         <div class="container child">
             <div class="wrap-login100" style="padding-top: 30px;">
-                <div class="login100-pic js-tilt" data-tilt style="padding-top: 80px;">
+                <div class="login100-pic js-tilt" data-tilt style="padding-top: 40px;">
                     <img src="https://thingstoknow2015.files.wordpress.com/2015/06/cool-question-marks-question-mark-scratch-head1.jpg" alt="IMG" style="max-width: 200px; height:auto;" />
                 </div>
 
-                <form method="post" action="/forgotpass" class="login100-form" style="padding-top: 80px;">
-                    <span class="login100-form-title" style="padding-bottom: 50px;">
+                <form method="post" action="/forgotpass" class="login100-form">
+                    <span class="login100-form-title" style="padding-bottom: 30px; margin-top:30px;">
                         E-Library
                         <p class="text-center">Educate – Captivate – Connect</p>
                     </span>
