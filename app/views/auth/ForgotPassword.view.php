@@ -6,9 +6,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     } elseif ($_SESSION['user_type'] === 'Admin') {
         header("location: /admin");
     }
-} else {
-    header('location:/');
-} ?>
+}  ?>
 
 <!DOCTYPE html>
 <html lang="en">
