@@ -10,9 +10,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         header("location: /admin");
     }
 }
- else {
-     header('location:/');
- }
 ?>
 <!DOCTYPE html>
 <html>

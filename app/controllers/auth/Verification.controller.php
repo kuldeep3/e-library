@@ -7,5 +7,5 @@ $results = App::get('databaseUser')->activate($id, $hash);
 if (isset($results)) {
    header('location:/activated');
 } else {
-    echo "Please verify your account";
+    header('location:404');
 }
