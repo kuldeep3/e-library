@@ -3,7 +3,6 @@ if (isset($_GET['time'])) {
     $time = $_GET['time'];
     $curr_time = time();
     $res = $curr_time - $time;
-    var_dump($res);
     if ($res > 81600) {
          header('location:/timeout');
     }

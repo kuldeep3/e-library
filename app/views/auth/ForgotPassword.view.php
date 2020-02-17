@@ -6,6 +6,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     } elseif ($_SESSION['user_type'] === 'Admin') {
         header("location: /admin");
     }
+} else {
+    header('location:/');
 } ?>
 
 <!DOCTYPE html>
@@ -71,14 +73,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                         </span>
                     </div>
                     <?php
-                if (isset($_SESSION["err"])) { ?>
-                    <p style="color:red; margin-bottom:0px;">
-                        <? $err = $_SESSION["err"];
-                        echo $err;
-                        unset($_SESSION["err"]); ?>
-                    </p>
-                <?php }
-                ?>
+                    if (isset($_SESSION["err"])) { ?>
+                        <p style="color:red; margin-bottom:0px;">
+                            <? $err = $_SESSION["err"];
+                            echo $err;
+                            unset($_SESSION["err"]); ?>
+                        </p>
+                    <?php }
+                    ?>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" name="reset" type="submit">
                             Get Password Reset Link
