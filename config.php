@@ -4,7 +4,7 @@ return [
     'database' => [
         'name' => 'pre_test',
         'username' => 'root',
-        'password' => '',
+        'password' => 'kul.1212221',
         'connection' => 'mysql:host=localhost',
         'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
