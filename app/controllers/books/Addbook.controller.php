@@ -29,7 +29,6 @@
         }
         // Check file size
         if ($_FILES["image"]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
             $uploadOk = 0;
             $err = "File must be less than 500KB";
             $_SESSION["err"] = $err;

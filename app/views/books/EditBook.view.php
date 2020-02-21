@@ -132,7 +132,15 @@ foreach ($ch as $key) {
                     </div>
                     <?php $bid = $_GET['bid']; ?>
                     <input type="hidden" name="bid" value="<?php echo $bid; ?>">
-
+                    <?php
+                    if (isset($_SESSION["err"])) { ?>
+                        <p style="color:red; margin-bottom:0px;">
+                            <? $err = $_SESSION["err"];
+                            echo $err;
+                            unset($_SESSION["err"]); ?>
+                        </p>
+                    <?php }
+                    ?>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" name="bookUpdated" value="submit">
                             Update Book
