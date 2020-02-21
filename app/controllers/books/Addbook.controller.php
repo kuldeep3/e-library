@@ -16,19 +16,24 @@
             echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
-            echo "File is not an image.";
             $uploadOk = 0;
+            $err = "File is not an image";
+            $_SESSION["err"] = $err;
+            header('location:/addBook');
         }
-
-        // Check if file already exists
         if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
             $uploadOk = 0;
+            $err = "Sorry, file already exists";
+            $_SESSION["err"] = $err;
+            header('location:/addBook');
         }
         // Check file size
         if ($_FILES["image"]["size"] > 500000) {
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
+            $err = "File must be less than 500KB";
+            $_SESSION["err"] = $err;
+            header('location:/addBook');
         }
         // Allow certain file formats
         if (
