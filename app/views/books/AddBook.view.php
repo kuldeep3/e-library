@@ -130,6 +130,15 @@ $cat = App::get('databaseCat')->listCategories(); ?>
                             <i class="fa fa-file" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <?php
+                    if (isset($_SESSION["err"])) { ?>
+                        <p style="color:red; margin-bottom:0px;">
+                            <? $err = $_SESSION["err"];
+                            echo $err;
+                            unset($_SESSION["err"]); ?>
+                        </p>
+                    <?php }
+                    ?>
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" name="bookAdded" value="submit">
