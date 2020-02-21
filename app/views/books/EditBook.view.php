@@ -68,7 +68,7 @@ foreach ($ch as $key) {
         <div class="container child">
             <div class="wrap-login100" style="padding-top: 60px;">
                 <div class="login100-pic js-tilt" data-tilt style="padding-top: 50px;">
-                    <img id="blah" src="app/public/Resources/Login/images/books.png" alt="IMG" style="max-width: 200px; height:auto;">
+                    <img id="blah" src="app/public/Resources/img/<?php echo $book['image']; ?>" alt="IMG" style="max-width: 200px; height:auto;">
                 </div>
 
                 <form method="post" action="/editbook" class="login100-form" enctype="multipart/form-data" style="float: right;">
