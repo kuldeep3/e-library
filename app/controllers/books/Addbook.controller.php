@@ -28,14 +28,14 @@
             header('location:/addBook');
         }
         // Check file size
-        if ($_FILES["image"]["size"] > 500000) {
+        elseif ($_FILES["image"]["size"] > 500000) {
             $uploadOk = 0;
             $err = "File must be less than 500KB";
             $_SESSION["err"] = $err;
             header('location:/addBook');
         }
         // Allow certain file formats
-        if (
+        elseif (
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif"
         ) {
@@ -45,7 +45,7 @@
             header('location:/addBook');
         }
         // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
+        elseif ($uploadOk == 0) {
             $err = "Sorry, your file was not uploaded";
             $_SESSION["err"] = $err;
             header('location:/addBook');
