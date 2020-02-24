@@ -16,4 +16,5 @@
 
 
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3733/badge)](https://bestpractices.coreinfrastructure.org/projects/3733)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/kuldeep3/e-library.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kuldeep3/e-library/context:javascript)
 
