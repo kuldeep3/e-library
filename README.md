@@ -14,3 +14,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b9810ac36c34c62971f2b0c996880c2)](https://www.codacy.com/manual/kuldeep3/e-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kuldeep3/e-library&amp;utm_campaign=Badge_Grade)
 ![](https://img.shields.io/github/license/kuldeep3/e-library)
 
+
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3733/badge)](https://bestpractices.coreinfrastructure.org/projects/3733)
+
