@@ -1,20 +1,41 @@
-# e-library
+<h1 align="center">Welcome to E-Library 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/kuldeep3/e-library/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/arcenmities" target="_blank">
+    <img alt="Twitter: arcenmities" src="https://img.shields.io/twitter/follow/arcenmities.svg?style=social" />
+  </a>
+</p>
 
+> A book keeping application coded on PHP to maintain an inventory of books and a history of users reading them.
 
+### 🏠 [Homepage](e-library.com)
 
-![](https://img.shields.io/github/languages/count/kuldeep3/e-Library)
-![](https://img.shields.io/github/languages/code-size/kuldeep3/e-Library)
-![](https://img.shields.io/github/repo-size/kuldeep3/e-Library)
-![](https://img.shields.io/github/issues/kuldeep3/e-Library)
-![](https://img.shields.io/github/issues-pr/kuldeep3/e-Library)
+### ✨ [Demo](e-library.com)
 
-![](https://img.shields.io/github/last-commit/kuldeep3/e-Library)
-![](https://img.shields.io/github/contributors/kuldeep3/e-Library)
-![](https://img.shields.io/maintenance/yes/2020)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b9810ac36c34c62971f2b0c996880c2)](https://www.codacy.com/manual/kuldeep3/e-library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kuldeep3/e-library&amp;utm_campaign=Badge_Grade)
-![](https://img.shields.io/github/license/kuldeep3/e-library)
+## Author
 
+👤 **Kuldeep Upreti**
 
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3733/badge)](https://bestpractices.coreinfrastructure.org/projects/3733)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/kuldeep3/e-library.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kuldeep3/e-library/context:javascript)
+* Website: https://coloredcow.com/?utm_source=github&utm_medium=kuldeep3
+* Twitter: [@arcenmities](https://twitter.com/arcenmities)
+* Github: [@kuldeep3](https://github.com/kuldeep3)
+* LinkedIn: [@kuldeep-upreti](https://linkedin.com/in/kuldeep-upreti)
 
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/kuldeep3/e-library/issues). 
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2022 [Kuldeep Upreti](https://github.com/kuldeep3).<br />
+This project is [MIT](https://github.com/kuldeep3/e-library/blob/master/LICENSE) licensed.
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
